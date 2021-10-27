@@ -12,8 +12,8 @@ public class Project
         double delay = -1;
         int trace = -1;
         int seed = -1;
-	int windowsize = -1;
-	double timeout = -1;
+        int windowsize = -1;
+        double timeout = -1;
         String buffer = "";
         File outputfile = new File("OutputFile");
         BufferedReader stdIn = new BufferedReader(
@@ -175,7 +175,7 @@ public class Project
             }
         }
 
-	while (timeout <= 0)
+        while (timeout <= 0)
         {
             System.out.print("Enter retransmission timeout (>0.0) [15.0] ");
             try
@@ -250,7 +250,7 @@ public class Project
             
             if (buffer.equals(""))
             {
-		seed = 0;
+                seed = 0;
             }
             else
             {            

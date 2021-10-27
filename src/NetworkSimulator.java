@@ -57,9 +57,9 @@ public abstract class NetworkSimulator
         traceLevel = trace;
         eventList = new EventListImpl();
         rand = new OSIRandom(seed);
-	try{
-	    outFile = new FileWriter("OutputFile");
-	}catch (Exception e) {e.printStackTrace();}
+        try{
+            outFile = new FileWriter("OutputFile");
+        }catch (Exception e) {e.printStackTrace();}
 
         nSim = 0;
         nToLayer3 = 0;
@@ -152,8 +152,8 @@ public abstract class NetworkSimulator
                     nSim++;
 
                     // If we've reached the maximum message count, exit the main loop
-		    if (nSim == maxMessages+1)
-			break;
+                    if (nSim == maxMessages+1)
+                        break;
                     
                     // Let the student handle the new message
                     aOutput(new Message(new String(nextMessage)));
@@ -162,15 +162,15 @@ public abstract class NetworkSimulator
                 default:
                     System.out.println("INTERNAL PANIC: Unknown event type");
             }
-	    if (nSim == maxMessages+1)
-		break;
+            if (nSim == maxMessages+1)
+                break;
         }
         System.out.println("Simulator terminated at time "+getTime());
         Simulation_done();
-	try{
-	    outFile.flush();
-	    outFile.close();
-	}catch (Exception e) {e.printStackTrace();}
+        try{
+            outFile.flush();
+            outFile.close();
+        }catch (Exception e) {e.printStackTrace();}
     }
     
     /* Generate the next arrival and add it to the event list */
@@ -308,11 +308,11 @@ public abstract class NetworkSimulator
             {
                 String payload = packet.getPayload();
                 
-		if (payload.length()>0)
+                if (payload.length()>0)
                 
-		    payload = "?" + payload.substring(1);
-		
-		else payload = "?";
+                    payload = "?" + payload.substring(1);
+                
+                else payload = "?";
                 
                 packet.setPayload(payload);
             }
@@ -338,10 +338,10 @@ public abstract class NetworkSimulator
     
     protected void toLayer5(String dataSent)
     {
-	try{
-	    outFile.write(dataSent,0,MAXDATASIZE);
-	    outFile.write('\n');
-	}catch (Exception e) {e.printStackTrace();}
+        try{
+            outFile.write(dataSent,0,MAXDATASIZE);
+            outFile.write('\n');
+        }catch (Exception e) {e.printStackTrace();}
     }
     
     protected double getTime()
