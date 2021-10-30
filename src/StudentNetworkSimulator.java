@@ -169,6 +169,31 @@ public class StudentNetworkSimulator extends NetworkSimulator
 
     }
 
+    public int addChecksum(Packet p) {
+        int newChecksum = caculateChecksum(p);
+        p.setChecksum(newChecksum);
+    }
+
+    public int caculateChecksum(Packet p) {
+        int newChecksum = 0;
+        newChecksum += p.getSeqnum();
+        newChecksum += p.getAcknum();
+        for (Character c : p.getPayload().toCharArray()) {
+            newChecksum += Character.getNumericValue(c);
+        }
+        return newChecksum;
+    }
+
+    public boolean evaluateChecksum(Packet p) {
+        int newChecksum = 0;
+        newChecksum += p.getSeqnum();
+        newChecksum += p.getAcknum();
+        for (Character c : p.getPayload().toCharArray()) {
+            newChecksum += Character.getNumericValue(c);
+        }
+        return newChecksum == p.getChecksum();
+    }
+
     // Use to print final statistics
     protected void Simulation_done()
     {
