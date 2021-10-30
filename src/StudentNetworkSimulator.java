@@ -169,7 +169,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
 
     }
 
-    public int addChecksum(Packet p) {
+    public void addChecksum(Packet p) {
         int newChecksum = caculateChecksum(p);
         p.setChecksum(newChecksum);
     }
