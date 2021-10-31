@@ -92,7 +92,15 @@ public class StudentNetworkSimulator extends NetworkSimulator
     private int WindowSize;
     private double RxmtInterval;
     private int LimitSeqNo;
-    
+
+    //region self define attributes
+    private ArrayList<Packet> senderWindowPackets;
+    private ArrayList<Packet> receiverWindowPackets;
+    private int nextSeqnum;
+    private int bSeqnum;
+    private boolean isWaitting;
+    //endregion
+
     // Add any necessary class variables here.  Remember, you cannot use
     // these variables to send messages error free!  They can only hold
     // state information for A or B.
@@ -110,8 +118,13 @@ public class StudentNetworkSimulator extends NetworkSimulator
     {
         super(numMessages, loss, corrupt, avgDelay, trace, seed);
         WindowSize = winsize;
-        LimitSeqNo = winsize*2; // set appropriately; assumes SR here!
+        // LimitSeqNo = winsize*2; // set appropriately; assumes SR here!
+        LimitSeqNo = WindowSize + 1;  // stop and wait
         RxmtInterval = delay;
+
+        this.nextSeqnum = 0;
+        this.bSeqnum = 0;
+        this.isWaitting = false;
     }
 
     
@@ -121,7 +134,26 @@ public class StudentNetworkSimulator extends NetworkSimulator
     // the receiving upper layer.
     protected void aOutput(Message message)
     {
-
+        // if currently in the waiting state, do not take message from above
+        if (isWaitting) {
+            return;
+        }
+        Packet newPacket = new Packet(this.nextSeqnum, 0, 0,message.getData());
+        // set sequence number to the next sequence number
+        this.moveToNextSeqnum();
+        // add checksum to the packet
+        this.addChecksum(newPacket);
+        // save the packet
+        if (this.senderWindowPackets.size() >= this.WindowSize) {
+            this.senderWindowPackets.remove(0);
+        }
+        this.senderWindowPackets.add(newPacket);
+        // set state to waiting
+        this.isWaitting = true;
+        // start the timer
+        this.startTimer(A, RxmtInterval);
+        // send the packet
+        this.toLayer3(A, newPacket);
     }
     
     // This routine will be called whenever a packet sent from the B-side 
@@ -130,6 +162,24 @@ public class StudentNetworkSimulator extends NetworkSimulator
     // sent from the B-side.
     protected void aInput(Packet packet)
     {
+        // if the receied is ACK (checksum ok and not corrupted and acknum is the save sequence num)
+        if (this.evaluateChecksum(packet) &&
+                (packet.getAcknum() == this.senderWindowPackets.get(0).getSeqnum())) {
+            // stop timmer
+            this.stopTimer(A);
+            // remove the sent packet from memory
+            this.senderWindowPackets.remove(0);
+            // leave the waitting state
+            this.isWaitting = false;
+        }
+        // if the received packet is corrupted ro not ACK (acknum different from save sequenc enum
+        else {
+            this.toLayer3(A, this.senderWindowPackets.get(0));
+
+            // restart timer (stop and start timer)
+            this.stopTimer(A);
+            this.startTimer(A, RxmtInterval);
+        }
 
     }
     
@@ -139,7 +189,11 @@ public class StudentNetworkSimulator extends NetworkSimulator
     // for how the timer is started and stopped. 
     protected void aTimerInterrupt()
     {
+        this.toLayer3(A, this.senderWindowPackets.get(0));
 
+        // restart timer (stop and start timer)
+        this.stopTimer(A);
+        this.startTimer(A, RxmtInterval);
     }
     
     // This routine will be called once, before any of your other A-side 
@@ -157,7 +211,26 @@ public class StudentNetworkSimulator extends NetworkSimulator
     // sent from the A-side.
     protected void bInput(Packet packet)
     {
-
+        // if perfecty
+        if (this.evaluateChecksum(packet) && packet.getSeqnum() == this.bSeqnum) {
+            // move to next seqeuence number check in b
+            this.moveBSeqnum();
+            // extract packet and send to layer above
+            toLayer5(packet.getPayload());
+            // create new ack packet, and adding proper checksum to it
+            Packet ackPacket = new Packet(0, packet.getSeqnum(), 0);
+            this.addChecksum(ackPacket);
+            // send ack
+            toLayer3(B, ackPacket);
+        }
+        // if corrupt or wrong seqnum
+        else {
+            // create new ack packet, and adding proper checksum to it
+            Packet ackPacket = new Packet(0, packet.getSeqnum(), 0);
+            this.addChecksum(ackPacket);
+            // send ack
+            toLayer3(B, ackPacket);
+        }
     }
     
     // This routine will be called once, before any of your other B-side 
@@ -167,6 +240,15 @@ public class StudentNetworkSimulator extends NetworkSimulator
     protected void bInit()
     {
 
+    }
+
+
+    //region self define function
+    public void moveToNextSeqnum() {
+        this.nextSeqnum = (this.nextSeqnum + 1) / this.LimitSeqNo;
+    }
+    public void moveBSeqnum() {
+        this.bSeqnum = (this.bSeqnum + 1) / this.LimitSeqNo;
     }
 
     public void addChecksum(Packet p) {
@@ -183,6 +265,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
         }
         return newChecksum;
     }
+    //endregion
 
     public boolean evaluateChecksum(Packet p) {
         int newChecksum = 0;
