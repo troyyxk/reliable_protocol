@@ -316,9 +316,9 @@ public class StudentNetworkSimulator extends NetworkSimulator
         else {
             reTransmitCntA++;
             System.out.println("A, retransmit, not in window: " + acknum);
-            for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
-//                int localI = overallToLocalSeqnum(i);
-                aSendPacket(aBuffer.get(i));
+            if (aBaseOverall < nextSeqnumOverall) {
+                aSendPacket(aBuffer.get(aBaseOverall));
+
             }
         }
     }
