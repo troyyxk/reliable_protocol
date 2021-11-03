@@ -62,8 +62,11 @@ public class Event
         }        
         else
         {
+            //region gbn sack
+
             packet = new Packet(p.getSeqnum(), p.getAcknum(),
-                                p.getChecksum(), p.getPayload());
+                                p.getChecksum(), p.getPayload(), p.getSack());
+            //endregion
         }
         
         return true;

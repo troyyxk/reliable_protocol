@@ -4,16 +4,25 @@ public class Packet
     private int acknum;
     private int checksum;
     private String payload;
-    
+
+    //region gbn sack
+    private int[] sack;
+    //endregion
+
     public Packet(Packet p)
     {
         seqnum = p.getSeqnum();
         acknum = p.getAcknum();
         checksum = p.getChecksum();
         payload = new String(p.getPayload());
+
+        //region gbn sack
+        this.sack = p.getSack();
+        //endregion
+
     }
     
-    public Packet(int seq, int ack, int check, String newPayload)
+    public Packet(int seq, int ack, int check, String newPayload, int[] sack)
     {
         seqnum = seq;
         acknum = ack;
@@ -30,16 +39,35 @@ public class Packet
         {
             payload = new String(newPayload);
         }
+
+        //region gbn sack
+        this.sack = sack;
+        //endregion
+
     }
     
-    public Packet(int seq, int ack, int check)
+    public Packet(int seq, int ack, int check, int[] sack)
     {
         seqnum = seq;
         acknum = ack;
         checksum = check;
         payload = "";
-    }    
-        
+
+        //region gbn sack
+        this.sack = sack;
+        //endregion
+
+    }
+
+    //region gbn sack
+    public int[] getSack() {
+        return sack;
+    }
+
+    public void setSack(int[] sack) {
+        this.sack = sack;
+    }
+    //endregion
 
     public boolean setSeqnum(int n)
     {

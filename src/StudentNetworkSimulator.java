@@ -1,5 +1,4 @@
 import java.util.*;
-import java.io.*;
 
 public class StudentNetworkSimulator extends NetworkSimulator
 {
@@ -14,7 +13,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
      *
      * Predefined Member Methods:
      *
-     *  void stopTimer(int entity): 
+     *  void stopTimer(int entity):
      *       Stops the timer running at "entity" [A or B]
      *  void startTimer(int entity, double increment): 
      *       Starts a timer running at "entity" [A or B], which will expire in
@@ -92,7 +91,20 @@ public class StudentNetworkSimulator extends NetworkSimulator
     private int WindowSize;
     private double RxmtInterval;
     private int LimitSeqNo;
-    
+
+    //region gbn sack
+    // A
+    private int aBaseOverall, nextSeqnumOverall, aIncommingSeqnum;
+    private ArrayList<Packet> aBuffer;
+    // N is window size
+
+    // B
+    private int bExpectedSeqnum, bSackLenLimit;
+    private HashMap<Integer, Packet> bBuffer;
+    private ArrayList<Integer> bSack;
+    // N is window size
+    //endregion
+
     // Add any necessary class variables here.  Remember, you cannot use
     // these variables to send messages error free!  They can only hold
     // state information for A or B.
@@ -110,10 +122,138 @@ public class StudentNetworkSimulator extends NetworkSimulator
     {
         super(numMessages, loss, corrupt, avgDelay, trace, seed);
         WindowSize = winsize;
-        LimitSeqNo = winsize*2; // set appropriately; assumes SR here!
+        LimitSeqNo = winsize*2; // Part 2 GBN
         RxmtInterval = delay;
     }
 
+    //region helper function
+    public void addChecksum(Packet p) {
+        int newChecksum = caculateChecksum(p);
+        p.setChecksum(newChecksum);
+    }
+
+    public int caculateChecksum(Packet p) {
+        int newChecksum = 0;
+        newChecksum += p.getSeqnum();
+        newChecksum += p.getAcknum();
+        for (Character c : p.getPayload().toCharArray()) {
+            newChecksum += Character.getNumericValue(c);
+        }
+        for (int i = 0; i < p.getSack().length; i++) {
+            newChecksum += p.getSack()[i];
+        }
+        return newChecksum;
+    }
+
+    public boolean evaluateChecksum(Packet p) {
+        int newChecksum = 0;
+        newChecksum += p.getSeqnum();
+        newChecksum += p.getAcknum();
+        for (Character c : p.getPayload().toCharArray()) {
+            newChecksum += Character.getNumericValue(c);
+        }
+        for (int i = 0; i < p.getSack().length; i++) {
+            newChecksum += p.getSack()[i];
+        }
+        return newChecksum == p.getChecksum();
+    }
+
+    public int convertExpectedSeqnumToCurSeqnum(int expectedSeqnum) {
+        return subtructFromSeqnum(expectedSeqnum);
+    }
+
+    public int[] getSACK(ArrayList<Integer> sackList) {
+        if (sackList.size() > this.bSackLenLimit) {
+            System.out.println("In getSACK, sackList has length longer than bSackLenLimit!");
+            System.exit(1);
+        }
+        int[] resultSack = new int[this.bSackLenLimit];
+        for (int i = 0; i < sackList.size(); i++) {
+            resultSack[i] = sackList.get(i);
+        }
+        return resultSack;
+    }
+
+    public int subtructFromSeqnum(int seqnum) {
+        if (seqnum <= 0 || seqnum > this.LimitSeqNo) {
+            System.out.println("In subtructFromSeqnum, wrong seqnum: " + seqnum + "!");
+            System.exit(1);
+        }
+        if (seqnum == 1) {
+            return this.LimitSeqNo;
+        }
+        return seqnum - 1;
+    }
+
+    public int addOneToSeqnum(int seqnum) {
+        if (seqnum <= 0 || seqnum > this.LimitSeqNo) {
+            System.out.println("In addOneToSeqnum, wrong seqnum: " + seqnum + "!");
+            System.exit(1);
+        }
+        if (seqnum == LimitSeqNo) {
+            return 1;
+        }
+        return seqnum + 1;
+    }
+
+
+    private boolean inWindow(int bExpectedSeqnum, int windowSize, int i) {
+        if (i < bExpectedSeqnum) {
+            return i + LimitSeqNo < bExpectedSeqnum + windowSize;
+        }
+        return i < bExpectedSeqnum + windowSize;
+    }
+
+    public Packet createACKPacket() {
+        Packet curPacket = new Packet(0,
+                this.convertExpectedSeqnumToCurSeqnum(this.bExpectedSeqnum),
+                0,
+                this.getSACK(this.bSack));
+        addChecksum(curPacket);
+        return curPacket;
+    }
+
+    public Packet createPacketWithMessage(Message message) {
+        Packet curPacket = new Packet(aIncommingSeqnum,
+                0,
+                0,
+                message.getData(),
+                new int[5]);
+        addChecksum(curPacket);
+        aIncommingSeqnum = addOneToSeqnum(aIncommingSeqnum);
+        return curPacket;
+    }
+
+    private void addToBSack(int packetSeqnum) {
+        bSack.add(packetSeqnum);
+        if (bSack.size() > bSackLenLimit) {
+            bSack.remove(0);
+        }
+    }
+
+    public int overallToLocalSeqnum(int overallSeqnum) {
+        int localSeqnum = overallSeqnum % LimitSeqNo;
+        return localSeqnum + 1;
+    }
+
+    public void aSendPacket(Packet packet) {
+        System.out.println("A, send: " + packet.getSeqnum());
+        toLayer3(A, packet);
+        stopTimer(A);
+        startTimer(A, RxmtInterval);
+    }
+
+    private int getLeap(int abase, int acknum) {
+        if (acknum < abase) {
+            return (LimitSeqNo - abase) + (acknum - 0);
+        }
+        return acknum - abase;
+    }
+
+    public static boolean arrayContains(final int[] arr, final int key) {
+        return Arrays.stream(arr).anyMatch(i -> i == key);
+    }
+    //endregion
     
     // This routine will be called whenever the upper layer at the sender [A]
     // has a message to send.  It is the job of your protocol to insure that
@@ -121,6 +261,25 @@ public class StudentNetworkSimulator extends NetworkSimulator
     // the receiving upper layer.
     protected void aOutput(Message message)
     {
+        System.out.println("------- A, aOutput -------");
+        System.out.println("Before: ");
+        System.out.println("nextSeqnumOverall: " + nextSeqnumOverall);
+        System.out.println("aBaseOverall: " + aBaseOverall);
+        System.out.println("aIncommingSeqnum: " + aIncommingSeqnum);
+
+        Packet curPacket = createPacketWithMessage(message);
+        aBuffer.add(curPacket);
+        if (nextSeqnumOverall < aBaseOverall + WindowSize) {
+            aSendPacket(aBuffer.get(nextSeqnumOverall));
+            nextSeqnumOverall++;
+        }
+
+        System.out.println("After: ");
+        System.out.println("nextSeqnumOverall: " + nextSeqnumOverall);
+        System.out.println("aBaseOverall: " + aBaseOverall);
+        System.out.println("aIncommingSeqnum: " + aIncommingSeqnum);
+        System.out.println("--------------------------");
+
 
     }
     
@@ -130,16 +289,61 @@ public class StudentNetworkSimulator extends NetworkSimulator
     // sent from the B-side.
     protected void aInput(Packet packet)
     {
-
+        int acknum = packet.getAcknum();
+        int aBaseLocal = overallToLocalSeqnum(aBaseOverall);
+        // if corrupted
+        if (!evaluateChecksum(packet)) {
+            System.out.println("A, corrupt");
+            for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
+                aSendPacket(aBuffer.get(i));
+            }
+        }
+        // no corrupt
+        // if acknum in packet, do not trigger retransmission
+        else if (inWindow(aBaseLocal, WindowSize, acknum)) {
+            System.out.println("A, in window: " + acknum);
+            System.out.println("aBaseLocal: " + aBaseLocal);
+            System.out.println("aBaseOverall: " + aBaseOverall + "nextSeqnumOverall: " + nextSeqnumOverall);
+            int leapForward = getLeap(aBaseLocal, acknum) + 1;
+            aBaseOverall += leapForward;
+            System.out.println("aBaseOverall: " + aBaseOverall + "nextSeqnumOverall: " + nextSeqnumOverall);
+//            if (aBaseOverall > nextSeqnumOverall) {
+//                System.out.println("In aInput, aBaseLocal > nextSeqnumOverall");
+//                System.exit(1);
+//            }
+            // reach the end of the buffer
+            if (aBaseOverall >= nextSeqnumOverall) {
+                System.out.println("A, reach the end of buffer, stop timer");
+                stopTimer(A);
+            } else {
+                while (nextSeqnumOverall < aBaseOverall + WindowSize && aBuffer.size() > nextSeqnumOverall) {
+                    aSendPacket(aBuffer.get(nextSeqnumOverall));
+                    nextSeqnumOverall++;
+                }
+            }
+        }
+        // ack num not in window, retransmit
+        else {
+            System.out.println("A, retransmit, not in window: " + acknum);
+            for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
+                int localI = overallToLocalSeqnum(i);
+                if (!arrayContains(packet.getSack(), localI)) {
+                    aSendPacket(aBuffer.get(i));
+                }
+            }
+        }
     }
-    
+
     // This routine will be called when A's timer expires (thus generating a 
     // timer interrupt). You'll probably want to use this routine to control 
     // the retransmission of packets. See startTimer() and stopTimer(), above,
     // for how the timer is started and stopped. 
     protected void aTimerInterrupt()
     {
-
+        System.out.println("A, timout");
+        for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
+            aSendPacket(aBuffer.get(i));
+        }
     }
     
     // This routine will be called once, before any of your other A-side 
@@ -148,7 +352,10 @@ public class StudentNetworkSimulator extends NetworkSimulator
     // of entity A).
     protected void aInit()
     {
-
+        this.aBaseOverall = 0;
+        this.nextSeqnumOverall = 0;
+        this.aIncommingSeqnum = 1;
+        this.aBuffer = new ArrayList<Packet>();
     }
     
     // This routine will be called whenever a packet sent from the B-side 
@@ -157,16 +364,60 @@ public class StudentNetworkSimulator extends NetworkSimulator
     // sent from the A-side.
     protected void bInput(Packet packet)
     {
+        // corrupted
+        if (!evaluateChecksum(packet)) {
+            System.out.println("B, corrupt packet");
+            Packet curPacket = createACKPacket();
+            toLayer3(B, curPacket);
+        }
+        // not corrupted
+        // in order
+        else if (packet.getSeqnum() == bExpectedSeqnum) {
+            System.out.println("B, in order: " + packet.getSeqnum());
+            bExpectedSeqnum = addOneToSeqnum(bExpectedSeqnum);
+            toLayer5(packet.getPayload());
+
+            int i = bExpectedSeqnum;
+            while (inWindow(bExpectedSeqnum, WindowSize, i) && bBuffer.containsKey(i)) {
+                // update buffer and sack, to layer5 if possible
+                toLayer5(bBuffer.get(i).getPayload());
+                bBuffer.remove(i);
+                int finalI = i;
+                bSack.removeIf(a -> (a == finalI));
+
+                i = addOneToSeqnum(i);
+            }
+            bExpectedSeqnum = i;
+
+            Packet curPacket = createACKPacket();
+            toLayer3(B, curPacket);
+        }
+        // not in order
+        else {
+            System.out.println("B, not in order: " + packet.getSeqnum());
+            // if in window size, add to buffer and SACK
+            int packetSeqnum = packet.getSeqnum();
+            if (inWindow(bExpectedSeqnum, WindowSize, packetSeqnum)) {
+                bBuffer.put(packetSeqnum, packet);
+                addToBSack(packetSeqnum);
+            }
+
+            Packet curPacket = createACKPacket();
+            toLayer3(B, curPacket);
+        }
 
     }
-    
+
     // This routine will be called once, before any of your other B-side 
     // routines are called. It can be used to do any required
     // initialization (e.g. of member variables you add to control the state
     // of entity B).
     protected void bInit()
     {
-
+        bExpectedSeqnum = 1;
+        bBuffer = new HashMap<Integer, Packet>();
+        bSack = new ArrayList<Integer>();
+        bSackLenLimit = 5;
     }
 
     // Use to print final statistics
