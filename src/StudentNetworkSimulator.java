@@ -318,8 +318,10 @@ public class StudentNetworkSimulator extends NetworkSimulator
             System.out.println("A, retransmit, not in window: " + acknum);
             if (aBaseOverall < nextSeqnumOverall) {
                 aSendPacket(aBuffer.get(aBaseOverall));
-
             }
+//            for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
+//                aSendPacket(aBuffer.get(i));
+//            }
         }
     }
 
