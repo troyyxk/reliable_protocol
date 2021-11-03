@@ -9,13 +9,13 @@ public class StudentNetworkSimulator extends NetworkSimulator
      *                     Packet payload
      *
      *   int A           : a predefined integer that represents entity A
-     *   int B           : a predefined integer that represents entity B 
+     *   int B           : a predefined integer that represents entity B
      *
      * Predefined Member Methods:
      *
      *  void stopTimer(int entity):
      *       Stops the timer running at "entity" [A or B]
-     *  void startTimer(int entity, double increment): 
+     *  void startTimer(int entity, double increment):
      *       Starts a timer running at "entity" [A or B], which will expire in
      *       "increment" time units, causing the interrupt handler to be
      *       called.  You should only call this with A.
@@ -37,7 +37,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
      *
      *  Message: Used to encapsulate a message coming from layer 5
      *    Constructor:
-     *      Message(String inputData): 
+     *      Message(String inputData):
      *          creates a new Message containing "inputData"
      *    Methods:
      *      boolean setData(String inputData):
@@ -92,7 +92,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
     private double RxmtInterval;
     private int LimitSeqNo;
 
-    //region gbn sack
+    //region gbn
     // statistics
     int origTransmitCntA = 0, reTransmitCntA = 0;
     int packetReceivedB, delieveredCntB = 0, ackSentCntB = 0;
@@ -107,7 +107,6 @@ public class StudentNetworkSimulator extends NetworkSimulator
     // B
     private int bExpectedSeqnum;
     private HashMap<Integer, Packet> bBuffer;
-    private ArrayList<Integer> bSack;
     // N is window size
     //endregion
 
@@ -240,7 +239,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
         toLayer3(B, curPacket);
     }
     //endregion
-    
+
     // This routine will be called whenever the upper layer at the sender [A]
     // has a message to send.  It is the job of your protocol to insure that
     // the data in such a message is delivered in-order, and correctly, to
@@ -269,8 +268,8 @@ public class StudentNetworkSimulator extends NetworkSimulator
 
 
     }
-    
-    // This routine will be called whenever a packet sent from the B-side 
+
+    // This routine will be called whenever a packet sent from the B-side
     // (i.e. as a result of a toLayer3() being done by a B-side procedure)
     // arrives at the A-side.  "packet" is the (possibly corrupted) packet
     // sent from the B-side.
@@ -318,15 +317,16 @@ public class StudentNetworkSimulator extends NetworkSimulator
             reTransmitCntA++;
             System.out.println("A, retransmit, not in window: " + acknum);
             for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
+//                int localI = overallToLocalSeqnum(i);
                 aSendPacket(aBuffer.get(i));
             }
         }
     }
 
-    // This routine will be called when A's timer expires (thus generating a 
-    // timer interrupt). You'll probably want to use this routine to control 
+    // This routine will be called when A's timer expires (thus generating a
+    // timer interrupt). You'll probably want to use this routine to control
     // the retransmission of packets. See startTimer() and stopTimer(), above,
-    // for how the timer is started and stopped. 
+    // for how the timer is started and stopped.
     protected void aTimerInterrupt()
     {
         reTransmitCntA++;
@@ -335,8 +335,8 @@ public class StudentNetworkSimulator extends NetworkSimulator
             aSendPacket(aBuffer.get(i));
         }
     }
-    
-    // This routine will be called once, before any of your other A-side 
+
+    // This routine will be called once, before any of your other A-side
     // routines are called. It can be used to do any required
     // initialization (e.g. of member variables you add to control the state
     // of entity A).
@@ -347,8 +347,8 @@ public class StudentNetworkSimulator extends NetworkSimulator
         this.aIncommingSeqnum = 1;
         this.aBuffer = new ArrayList<Packet>();
     }
-    
-    // This routine will be called whenever a packet sent from the B-side 
+
+    // This routine will be called whenever a packet sent from the B-side
     // (i.e. as a result of a toLayer3() being done by an A-side procedure)
     // arrives at the B-side.  "packet" is the (possibly corrupted) packet
     // sent from the A-side.
@@ -370,12 +370,10 @@ public class StudentNetworkSimulator extends NetworkSimulator
 
             int i = bExpectedSeqnum;
             while (inWindow(bExpectedSeqnum, WindowSize, i) && bBuffer.containsKey(i)) {
-                // update buffer and sack, to layer5 if possible
+                // update buffer, to layer5 if possible
                 toLayer5(bBuffer.get(i).getPayload());
                 delieveredCntB++;
                 bBuffer.remove(i);
-                int finalI = i;
-                bSack.removeIf(a -> (a == finalI));
 
                 i = addOneToSeqnum(i);
             }
@@ -386,7 +384,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
         // not in order
         else {
             System.out.println("B, not in order: " + packet.getSeqnum());
-            // if in window size, add to buffer and SACK
+            // if in window size, add to buffer
             int packetSeqnum = packet.getSeqnum();
             if (inWindow(bExpectedSeqnum, WindowSize, packetSeqnum)) {
                 bBuffer.put(packetSeqnum, packet);
@@ -397,7 +395,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
 
     }
 
-    // This routine will be called once, before any of your other B-side 
+    // This routine will be called once, before any of your other B-side
     // routines are called. It can be used to do any required
     // initialization (e.g. of member variables you add to control the state
     // of entity B).
@@ -405,29 +403,28 @@ public class StudentNetworkSimulator extends NetworkSimulator
     {
         bExpectedSeqnum = 1;
         bBuffer = new HashMap<Integer, Packet>();
-        bSack = new ArrayList<Integer>();
     }
 
     // Use to print final statistics
     protected void Simulation_done()
     {
-            // TO PRINT THE STATISTICS, FILL IN THE DETAILS BY PUTTING VARIBALE NAMES. DO NOT CHANGE THE FORMAT OF PRINTED OUTPUT
-            System.out.println("\n\n===============STATISTICS=======================");
-            System.out.println("Number of original packets transmitted by A:" + origTransmitCntA);
-            System.out.println("Number of retransmissions by A:" + reTransmitCntA);
-            System.out.println("Number of data packets delivered to layer 5 at B:" + delieveredCntB);
-            System.out.println("Number of ACK packets sent by B:" + ackSentCntB);
-            System.out.println("Number of corrupted packets:" + corruptedCnt);
-            System.out.println("Ratio of lost packets:" + "<YourVariableHere>" );
-            System.out.println("Ratio of corrupted packets:" + "<YourVariableHere>");
-            System.out.println("Average RTT:" + "<YourVariableHere>");
-            System.out.println("Average communication time:" + "<YourVariableHere>");
-            System.out.println("==================================================");
+        // TO PRINT THE STATISTICS, FILL IN THE DETAILS BY PUTTING VARIBALE NAMES. DO NOT CHANGE THE FORMAT OF PRINTED OUTPUT
+        System.out.println("\n\n===============STATISTICS=======================");
+        System.out.println("Number of original packets transmitted by A:" + origTransmitCntA);
+        System.out.println("Number of retransmissions by A:" + reTransmitCntA);
+        System.out.println("Number of data packets delivered to layer 5 at B:" + delieveredCntB);
+        System.out.println("Number of ACK packets sent by B:" + ackSentCntB);
+        System.out.println("Number of corrupted packets:" + corruptedCnt);
+        System.out.println("Ratio of lost packets:" + "<YourVariableHere>" );
+        System.out.println("Ratio of corrupted packets:" + "<YourVariableHere>");
+        System.out.println("Average RTT:" + "<YourVariableHere>");
+        System.out.println("Average communication time:" + "<YourVariableHere>");
+        System.out.println("==================================================");
 
-            // PRINT YOUR OWN STATISTIC HERE TO CHECK THE CORRECTNESS OF YOUR PROGRAM
-            System.out.println("\nEXTRA:");
-            // EXAMPLE GIVEN BELOW
-            //System.out.println("Example statistic you want to check e.g. number of ACK packets received by A :" + "<YourVariableHere>"); 
-    }        
+        // PRINT YOUR OWN STATISTIC HERE TO CHECK THE CORRECTNESS OF YOUR PROGRAM
+        System.out.println("\nEXTRA:");
+        // EXAMPLE GIVEN BELOW
+        //System.out.println("Example statistic you want to check e.g. number of ACK packets received by A :" + "<YourVariableHere>");
+    }
 
 }
