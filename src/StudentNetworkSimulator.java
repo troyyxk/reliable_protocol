@@ -93,6 +93,12 @@ public class StudentNetworkSimulator extends NetworkSimulator
     private int LimitSeqNo;
 
     //region gbn sack
+    // statistics
+    int origTransmitCntA = 0, reTransmitCntA = 0;
+    int packetReceivedB, delieveredCntB = 0, ackSentCntB = 0;
+    int corruptedCnt = 0;
+    int timeOutCnt = 0;
+
     // A
     private int aBaseOverall, nextSeqnumOverall, aIncommingSeqnum;
     private ArrayList<Packet> aBuffer;
@@ -123,7 +129,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
         super(numMessages, loss, corrupt, avgDelay, trace, seed);
         WindowSize = winsize;
         LimitSeqNo = winsize*2; // Part 2 GBN
-        RxmtInterval = delay;
+        RxmtInterval = 3*delay;
     }
 
     //region helper function
@@ -253,6 +259,13 @@ public class StudentNetworkSimulator extends NetworkSimulator
     public static boolean arrayContains(final int[] arr, final int key) {
         return Arrays.stream(arr).anyMatch(i -> i == key);
     }
+
+    public void bSendAck() {
+        Packet curPacket = createACKPacket();
+        System.out.println("B, send ACK: " + curPacket.getAcknum());
+        ackSentCntB++;
+        toLayer3(B, curPacket);
+    }
     //endregion
     
     // This routine will be called whenever the upper layer at the sender [A]
@@ -271,6 +284,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
         aBuffer.add(curPacket);
         if (nextSeqnumOverall < aBaseOverall + WindowSize) {
             aSendPacket(aBuffer.get(nextSeqnumOverall));
+            origTransmitCntA++;
             nextSeqnumOverall++;
         }
 
@@ -293,6 +307,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
         int aBaseLocal = overallToLocalSeqnum(aBaseOverall);
         // if corrupted
         if (!evaluateChecksum(packet)) {
+            corruptedCnt++;
             System.out.println("A, corrupt");
             for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
                 aSendPacket(aBuffer.get(i));
@@ -305,6 +320,9 @@ public class StudentNetworkSimulator extends NetworkSimulator
             System.out.println("aBaseLocal: " + aBaseLocal);
             System.out.println("aBaseOverall: " + aBaseOverall + "nextSeqnumOverall: " + nextSeqnumOverall);
             int leapForward = getLeap(aBaseLocal, acknum) + 1;
+            if (leapForward > 1) {
+                System.out.println("*** More than 2 ***");
+            }
             aBaseOverall += leapForward;
             System.out.println("aBaseOverall: " + aBaseOverall + "nextSeqnumOverall: " + nextSeqnumOverall);
 //            if (aBaseOverall > nextSeqnumOverall) {
@@ -324,6 +342,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
         }
         // ack num not in window, retransmit
         else {
+            reTransmitCntA++;
             System.out.println("A, retransmit, not in window: " + acknum);
             for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
                 int localI = overallToLocalSeqnum(i);
@@ -340,7 +359,8 @@ public class StudentNetworkSimulator extends NetworkSimulator
     // for how the timer is started and stopped. 
     protected void aTimerInterrupt()
     {
-        System.out.println("A, timout");
+        reTransmitCntA++;
+        System.out.println("A, timeout");
         for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
             aSendPacket(aBuffer.get(i));
         }
@@ -366,9 +386,9 @@ public class StudentNetworkSimulator extends NetworkSimulator
     {
         // corrupted
         if (!evaluateChecksum(packet)) {
+            corruptedCnt++;
             System.out.println("B, corrupt packet");
-            Packet curPacket = createACKPacket();
-            toLayer3(B, curPacket);
+            bSendAck();
         }
         // not corrupted
         // in order
@@ -376,11 +396,13 @@ public class StudentNetworkSimulator extends NetworkSimulator
             System.out.println("B, in order: " + packet.getSeqnum());
             bExpectedSeqnum = addOneToSeqnum(bExpectedSeqnum);
             toLayer5(packet.getPayload());
+            delieveredCntB++;
 
             int i = bExpectedSeqnum;
             while (inWindow(bExpectedSeqnum, WindowSize, i) && bBuffer.containsKey(i)) {
                 // update buffer and sack, to layer5 if possible
                 toLayer5(bBuffer.get(i).getPayload());
+                delieveredCntB++;
                 bBuffer.remove(i);
                 int finalI = i;
                 bSack.removeIf(a -> (a == finalI));
@@ -389,8 +411,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
             }
             bExpectedSeqnum = i;
 
-            Packet curPacket = createACKPacket();
-            toLayer3(B, curPacket);
+            bSendAck();
         }
         // not in order
         else {
@@ -402,8 +423,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
                 addToBSack(packetSeqnum);
             }
 
-            Packet curPacket = createACKPacket();
-            toLayer3(B, curPacket);
+            bSendAck();
         }
 
     }
@@ -425,11 +445,11 @@ public class StudentNetworkSimulator extends NetworkSimulator
     {
             // TO PRINT THE STATISTICS, FILL IN THE DETAILS BY PUTTING VARIBALE NAMES. DO NOT CHANGE THE FORMAT OF PRINTED OUTPUT
             System.out.println("\n\n===============STATISTICS=======================");
-            System.out.println("Number of original packets transmitted by A:" + "<YourVariableHere>");
-            System.out.println("Number of retransmissions by A:" + "<YourVariableHere>");
-            System.out.println("Number of data packets delivered to layer 5 at B:" + "<YourVariableHere>");
-            System.out.println("Number of ACK packets sent by B:" + "<YourVariableHere>");
-            System.out.println("Number of corrupted packets:" + "<YourVariableHere>");
+            System.out.println("Number of original packets transmitted by A:" + origTransmitCntA);
+            System.out.println("Number of retransmissions by A:" + reTransmitCntA);
+            System.out.println("Number of data packets delivered to layer 5 at B:" + delieveredCntB);
+            System.out.println("Number of ACK packets sent by B:" + ackSentCntB);
+            System.out.println("Number of corrupted packets:" + corruptedCnt);
             System.out.println("Ratio of lost packets:" + "<YourVariableHere>" );
             System.out.println("Ratio of corrupted packets:" + "<YourVariableHere>");
             System.out.println("Average RTT:" + "<YourVariableHere>");
