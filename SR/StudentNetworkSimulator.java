@@ -110,6 +110,11 @@ public class StudentNetworkSimulator extends NetworkSimulator
     // N is window size
     //endregion
 
+    //Stat Varaibles
+    private List<Double> rttSendTimeList;
+    private List<Boolean> ifRetransmitList;
+    private List<Double> ackedList;
+
     // Add any necessary class variables here.  Remember, you cannot use
     // these variables to send messages error free!  They can only hold
     // state information for A or B.
@@ -256,6 +261,10 @@ public class StudentNetworkSimulator extends NetworkSimulator
         aBuffer.add(curPacket);
         if (nextSeqnumOverall < aBaseOverall + WindowSize) {
             aSendPacket(aBuffer.get(nextSeqnumOverall));
+            Double time = getTime();
+            rttSendTimeList.add(time);
+            ifRetransmitList.add(false);
+            ackedList.add(null);
             origTransmitCntA++;
             nextSeqnumOverall++;
         }
@@ -265,8 +274,6 @@ public class StudentNetworkSimulator extends NetworkSimulator
         System.out.println("aBaseOverall: " + aBaseOverall);
         System.out.println("aIncommingSeqnum: " + aIncommingSeqnum);
         System.out.println("--------------------------");
-
-
     }
     
     // This routine will be called whenever a packet sent from the B-side 
@@ -284,6 +291,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
             if (aBaseOverall < nextSeqnumOverall) {
                 reTransmitCntA++;
                 aSendPacket(aBuffer.get(aBaseOverall));
+                ifRetransmitList.set(aBaseOverall, true);
             }
         }
         // no corrupt
@@ -295,6 +303,13 @@ public class StudentNetworkSimulator extends NetworkSimulator
             int leapForward = getLeap(aBaseLocal, acknum) + 1;
             if (leapForward > 1) {
                 System.out.println("*** More than 1 ***");
+                for (int i = aBaseOverall; i < aBaseOverall + leapForward; i++) {
+                    ifRetransmitList.set(i, true);
+                }
+            }
+            Double time = getTime();
+            for (int i = aBaseOverall; i < aBaseOverall + leapForward; i++) {
+                ackedList.set(i, time);
             }
             aBaseOverall += leapForward;
             System.out.println("aBaseOverall: " + aBaseOverall + "nextSeqnumOverall: " + nextSeqnumOverall);
@@ -308,6 +323,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
                 stopTimer(A);
             } else {
                 while (nextSeqnumOverall < aBaseOverall + WindowSize && aBuffer.size() > nextSeqnumOverall) {
+                    rttSendTimeList.add(getTime());
                     aSendPacket(aBuffer.get(nextSeqnumOverall));
                     origTransmitCntA++;
                     nextSeqnumOverall++;
@@ -319,6 +335,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
             System.out.println("A, retransmit, not in window: " + acknum);
             if (aBaseOverall < nextSeqnumOverall) {
                 reTransmitCntA++;
+                ifRetransmitList.set(aBaseOverall, true);
                 aSendPacket(aBuffer.get(aBaseOverall));
             }
 //            for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
@@ -336,6 +353,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
         System.out.println("A, timeout");
         if (aBaseOverall < nextSeqnumOverall) {
             reTransmitCntA++;
+            ifRetransmitList.set(aBaseOverall, true);
             aSendPacket(aBuffer.get(aBaseOverall));
         }
 //        for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
@@ -354,6 +372,9 @@ public class StudentNetworkSimulator extends NetworkSimulator
         this.nextSeqnumOverall = 0;
         this.aIncommingSeqnum = 1;
         this.aBuffer = new ArrayList<Packet>();
+        this.rttSendTimeList = new ArrayList<>();
+        this.ifRetransmitList = new ArrayList<>();
+        this.ackedList = new ArrayList<>();
     }
     
     // This routine will be called whenever a packet sent from the B-side 
@@ -423,15 +444,40 @@ public class StudentNetworkSimulator extends NetworkSimulator
             System.out.println("Number of data packets delivered to layer 5 at B:" + delieveredCntB);
             System.out.println("Number of ACK packets sent by B:" + ackSentCntB);
             System.out.println("Number of corrupted packets:" + corruptedCnt);
-            System.out.println("Ratio of lost packets:" + "<YourVariableHere>" );
-            System.out.println("Ratio of corrupted packets:" + "<YourVariableHere>");
-            System.out.println("Average RTT:" + "<YourVariableHere>");
-            System.out.println("Average communication time:" + "<YourVariableHere>");
+            System.out.println("Ratio of lost packets:" + (double)(reTransmitCntA - corruptedCnt) / (origTransmitCntA + reTransmitCntA + ackSentCntB));
+            System.out.println("Ratio of corrupted packets:" + (double)(corruptedCnt) / (origTransmitCntA + reTransmitCntA + ackSentCntB - (reTransmitCntA - corruptedCnt)));
+            System.out.println("Average RTT:" + getAvgRtt());
+            System.out.println("Average communication time:" + getAvgComTime());
             System.out.println("==================================================");
 
             // PRINT YOUR OWN STATISTIC HERE TO CHECK THE CORRECTNESS OF YOUR PROGRAM
             System.out.println("\nEXTRA:");
             // EXAMPLE GIVEN BELOW
-            //System.out.println("Example statistic you want to check e.g. number of ACK packets received by A :" + "<YourVariableHere>"); 
+            //System.out.println("Example statistic you want to check e.g. number of ACK packets received by A :" + "<YourVariableHere>");
+            //System.out.println(rttSendTimeList.size());
+            //System.out.println(ifRetransmitList.size());
+            //System.out.println(ackedList.size());
+    }
+
+    private double getAvgRtt() {
+        int length = rttSendTimeList.size();
+        double tot = 0;
+        int qualifiedCnt = 0;
+        for (int i = 0; i < length; i++) {
+            if (!ifRetransmitList.get(i)) {
+                tot += ackedList.get(i) - rttSendTimeList.get(i);
+                qualifiedCnt++;
+            }
+        }
+        return tot / qualifiedCnt;
+    }
+
+    private double getAvgComTime() {
+        int length = rttSendTimeList.size();
+        double tot = 0;
+        for (int i = 0; i < length; i++) {
+            tot += ackedList.get(i) - rttSendTimeList.get(i);
+        }
+        return tot / length;
     }
 }
