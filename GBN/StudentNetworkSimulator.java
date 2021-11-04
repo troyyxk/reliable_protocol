@@ -336,17 +336,18 @@ public class StudentNetworkSimulator extends NetworkSimulator
             } else {
                 while (nextSeqnumOverall < aBaseOverall + WindowSize && aBuffer.size() > nextSeqnumOverall) {
                     aSendPacket(aBuffer.get(nextSeqnumOverall));
+                    origTransmitCntA++;
                     nextSeqnumOverall++;
                 }
             }
         }
         // ack num not in window, retransmit
         else {
-            reTransmitCntA++;
             System.out.println("A, retransmit, not in window: " + acknum);
             for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
                 int localI = overallToLocalSeqnum(i);
                 if (!arrayContains(packet.getSack(), localI)) {
+                    reTransmitCntA++;
                     aSendPacket(aBuffer.get(i));
                 }
             }
