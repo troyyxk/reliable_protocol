@@ -4998,7 +4998,7 @@ Number of retransmissions by A:97
 Number of data packets delivered to layer 5 at B:99
 Number of ACK packets sent by B:196
 Number of corrupted packets:125
-Ratio of lost packets:-0.07142857142857142
+Ratio of lost packets:0
 Ratio of corrupted packets:0.2976190476190476
 Average RTT:10.527384640033944
 Average communication time:20.660686580148017
