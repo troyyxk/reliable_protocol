@@ -318,6 +318,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
             System.out.println("A, corrupt");
             for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
                 ifRetransmitList.set(aBaseOverall, true);
+                reTransmitCntA++;
                 aSendPacket(aBuffer.get(i));
             }
         }
@@ -376,9 +377,9 @@ public class StudentNetworkSimulator extends NetworkSimulator
     // for how the timer is started and stopped. 
     protected void aTimerInterrupt()
     {
-        reTransmitCntA++;
         System.out.println("A, timeout");
         for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
+            reTransmitCntA++;
             ifRetransmitList.set(i, true);
             aSendPacket(aBuffer.get(i));
         }
