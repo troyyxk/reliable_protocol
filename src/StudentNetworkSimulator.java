@@ -360,9 +360,14 @@ public class StudentNetworkSimulator extends NetworkSimulator
         // ack num not in window, retransmit
         else {
             System.out.println("A, retransmit, not in window: " + acknum);
+            int j = 0;
             for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
                 int localI = overallToLocalSeqnum(i);
                 if (!arrayContains(packet.getSack(), localI)) {
+                    j++;
+                    if (j >=2) {
+                        System.out.println("^^^ Send window with size more than 1 ^^^");
+                    }
                     reTransmitCntA++;
                     ifRetransmitList.set(i, true);
                     aSendPacket(aBuffer.get(i));
@@ -378,7 +383,12 @@ public class StudentNetworkSimulator extends NetworkSimulator
     protected void aTimerInterrupt()
     {
         System.out.println("A, timeout");
+        int j = 0;
         for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
+            j++;
+            if (j >=2) {
+                System.out.println("^^^ Send window with size more than 1 ^^^");
+            }
             reTransmitCntA++;
             ifRetransmitList.set(i, true);
             aSendPacket(aBuffer.get(i));
