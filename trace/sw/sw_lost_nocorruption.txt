@@ -1,0 +1,4493 @@
+Inputs are :
+Enter number of messages to simulate (> 0): [10]
+Enter packet loss probability (0.0 for no loss): [0.0]
+Enter packet corruption probability (0.0 for no corruption): [0.0]
+Enter average time between messages from sender's layer 5 (> 0.0): [1000]
+Enter window size (> 0): [8]
+Enter retransmission timeout (>0.0) [15.0]
+Enter trace level (>= 0): [0]
+Enter random seed: [0]
+
+100
+0.3
+0.0
+300
+1
+15
+3
+1234
+
+-- * Network Simulator v1.0 * --
+Enter number of messages to simulate (> 0): [10] Enter packet loss probability (0.0 for no loss): [0.0] Enter packet corruption probability (0.0 for no corruption): [0.0] Enter average time between messages from sender's layer 5 (> 0.0): [1000] Enter window size (> 0): [8] Enter retransmission timeout (>0.0) [15.0] Enter trace level (>= 0): [0] Enter random seed: [0] generateNextArrival(): called
+generateNextArrival(): time is 0.0
+generateNextArrival(): future time for event 1 at entity 0 will be 65.1509140293588
+
+EVENT time: 65.1509140293588  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 65.1509140293588
+generateNextArrival(): future time for event 1 at entity 0 will be 101.0406811731315
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 0
+aBaseOverall: 0
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 201  payload: aaaaaaaaaaaaaaaaaaaa
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 65.1509140293588
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 65.1509140293588
+After:
+nextSeqnumOverall: 1
+aBaseOverall: 0
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 67.37757499923703  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 69.2864467299417  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 0nextSeqnumOverall: 1
+aBaseOverall: 1nextSeqnumOverall: 1
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 69.2864467299417
+
+EVENT time: 101.0406811731315  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 101.0406811731315
+generateNextArrival(): future time for event 1 at entity 0 will be 124.9732963042085
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 1
+aBaseOverall: 1
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 222  payload: bbbbbbbbbbbbbbbbbbbb
+toLayer3: packet being lost
+stopTimer: stopping timer at 101.0406811731315
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 101.0406811731315
+After:
+nextSeqnumOverall: 2
+aBaseOverall: 1
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 124.9732963042085  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 124.9732963042085
+generateNextArrival(): future time for event 1 at entity 0 will be 357.98211615344707
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 2
+aBaseOverall: 1
+aIncommingSeqnum: 1
+After:
+nextSeqnumOverall: 2
+aBaseOverall: 1
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 146.0406811731315  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 222  payload: bbbbbbbbbbbbbbbbbbbb
+toLayer3: packet being lost
+stopTimer: stopping timer at 146.0406811731315
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 146.0406811731315
+
+EVENT time: 191.0406811731315  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 222  payload: bbbbbbbbbbbbbbbbbbbb
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 191.0406811731315
+startTimer: starting timer at 191.0406811731315
+
+EVENT time: 192.4688863795892  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 194.43626209295937  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 1nextSeqnumOverall: 2
+aBaseOverall: 2nextSeqnumOverall: 2
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 194.43626209295937
+
+EVENT time: 357.98211615344707  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 357.98211615344707
+generateNextArrival(): future time for event 1 at entity 0 will be 794.372386852626
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 2
+aBaseOverall: 2
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 241  payload: cccccccccccccccccccc
+toLayer3: packet being lost
+stopTimer: stopping timer at 357.98211615344707
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 357.98211615344707
+After:
+nextSeqnumOverall: 3
+aBaseOverall: 2
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 402.98211615344707  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 241  payload: cccccccccccccccccccc
+toLayer3: packet being lost
+stopTimer: stopping timer at 402.98211615344707
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 402.98211615344707
+
+EVENT time: 447.98211615344707  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 241  payload: cccccccccccccccccccc
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 447.98211615344707
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 447.98211615344707
+
+EVENT time: 452.66347239600816  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 456.3329569383831  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 2nextSeqnumOverall: 3
+aBaseOverall: 3nextSeqnumOverall: 3
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 456.3329569383831
+
+EVENT time: 794.372386852626  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 794.372386852626
+generateNextArrival(): future time for event 1 at entity 0 will be 1386.169011505478
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 3
+aBaseOverall: 3
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 262  payload: dddddddddddddddddddd
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 794.372386852626
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 794.372386852626
+After:
+nextSeqnumOverall: 4
+aBaseOverall: 3
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 797.3505355998412  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 805.6871547593615  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 3nextSeqnumOverall: 4
+aBaseOverall: 4nextSeqnumOverall: 4
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 805.6871547593615
+
+EVENT time: 1386.169011505478  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 1386.169011505478
+generateNextArrival(): future time for event 1 at entity 0 will be 1862.9718924527724
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 4
+aBaseOverall: 4
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 281  payload: eeeeeeeeeeeeeeeeeeee
+toLayer3: packet being lost
+stopTimer: stopping timer at 1386.169011505478
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 1386.169011505478
+After:
+nextSeqnumOverall: 5
+aBaseOverall: 4
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 1431.169011505478  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 281  payload: eeeeeeeeeeeeeeeeeeee
+toLayer3: packet being lost
+stopTimer: stopping timer at 1431.169011505478
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 1431.169011505478
+
+EVENT time: 1476.169011505478  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 281  payload: eeeeeeeeeeeeeeeeeeee
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 1476.169011505478
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 1476.169011505478
+
+EVENT time: 1482.9817804498427  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 1485.516067995239  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 4nextSeqnumOverall: 5
+aBaseOverall: 5nextSeqnumOverall: 5
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 1485.516067995239
+
+EVENT time: 1862.9718924527724  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 1862.9718924527724
+generateNextArrival(): future time for event 1 at entity 0 will be 2203.3204138309884
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 5
+aBaseOverall: 5
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 302  payload: ffffffffffffffffffff
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 1862.9718924527724
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 1862.9718924527724
+After:
+nextSeqnumOverall: 6
+aBaseOverall: 5
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 1869.2270882290106  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 1870.284493545335  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 5nextSeqnumOverall: 6
+aBaseOverall: 6nextSeqnumOverall: 6
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 1870.284493545335
+
+EVENT time: 2203.3204138309884  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 2203.3204138309884
+generateNextArrival(): future time for event 1 at entity 0 will be 2441.053498947111
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 6
+aBaseOverall: 6
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 321  payload: gggggggggggggggggggg
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 2203.3204138309884
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 2203.3204138309884
+After:
+nextSeqnumOverall: 7
+aBaseOverall: 6
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 2207.398327585681  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 2209.6381725516526  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 6nextSeqnumOverall: 7
+aBaseOverall: 7nextSeqnumOverall: 7
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 2209.6381725516526
+
+EVENT time: 2441.053498947111  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 2441.053498947111
+generateNextArrival(): future time for event 1 at entity 0 will be 2701.6937772759175
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 7
+aBaseOverall: 7
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 342  payload: hhhhhhhhhhhhhhhhhhhh
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 2441.053498947111
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 2441.053498947111
+After:
+nextSeqnumOverall: 8
+aBaseOverall: 7
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 2448.9654835657825  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 2486.053498947111  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 342  payload: hhhhhhhhhhhhhhhhhhhh
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 2486.053498947111
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 2486.053498947111
+
+EVENT time: 2491.806329538865  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 2496.729392376476  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 7nextSeqnumOverall: 8
+aBaseOverall: 8nextSeqnumOverall: 8
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 2496.729392376476
+
+EVENT time: 2701.6937772759175  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 2701.6937772759175
+generateNextArrival(): future time for event 1 at entity 0 will be 2800.372325815607
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 8
+aBaseOverall: 8
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 361  payload: iiiiiiiiiiiiiiiiiiii
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 2701.6937772759175
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 2701.6937772759175
+After:
+nextSeqnumOverall: 9
+aBaseOverall: 8
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 2705.715933713797  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 2714.1506088442634  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 8nextSeqnumOverall: 9
+aBaseOverall: 9nextSeqnumOverall: 9
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 2714.1506088442634
+
+EVENT time: 2800.372325815607  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 2800.372325815607
+generateNextArrival(): future time for event 1 at entity 0 will be 3327.347636341441
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 9
+aBaseOverall: 9
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 382  payload: jjjjjjjjjjjjjjjjjjjj
+toLayer3: packet being lost
+stopTimer: stopping timer at 2800.372325815607
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 2800.372325815607
+After:
+nextSeqnumOverall: 10
+aBaseOverall: 9
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 2845.372325815607  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 382  payload: jjjjjjjjjjjjjjjjjjjj
+toLayer3: packet being lost
+stopTimer: stopping timer at 2845.372325815607
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 2845.372325815607
+
+EVENT time: 2890.372325815607  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 382  payload: jjjjjjjjjjjjjjjjjjjj
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 2890.372325815607
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 2890.372325815607
+
+EVENT time: 2897.758049256874  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 2904.915250099185  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 9nextSeqnumOverall: 10
+aBaseOverall: 10nextSeqnumOverall: 10
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 2904.915250099185
+
+EVENT time: 3327.347636341441  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 3327.347636341441
+generateNextArrival(): future time for event 1 at entity 0 will be 3407.1291238135927
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 10
+aBaseOverall: 10
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 401  payload: kkkkkkkkkkkkkkkkkkkk
+toLayer3: packet being lost
+stopTimer: stopping timer at 3327.347636341441
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 3327.347636341441
+After:
+nextSeqnumOverall: 11
+aBaseOverall: 10
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 3372.347636341441  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 401  payload: kkkkkkkkkkkkkkkkkkkk
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 3372.347636341441
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 3372.347636341441
+
+EVENT time: 3373.7821588793604  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 3381.8699301126135  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 10nextSeqnumOverall: 11
+aBaseOverall: 11nextSeqnumOverall: 11
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 3381.8699301126135
+
+EVENT time: 3407.1291238135927  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 3407.1291238135927
+generateNextArrival(): future time for event 1 at entity 0 will be 4005.4994354075743
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 11
+aBaseOverall: 11
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 422  payload: llllllllllllllllllll
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 3407.1291238135927
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 3407.1291238135927
+After:
+nextSeqnumOverall: 12
+aBaseOverall: 11
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 3411.190832239753  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 3412.780541398358  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 11nextSeqnumOverall: 12
+aBaseOverall: 12nextSeqnumOverall: 12
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 3412.780541398358
+
+EVENT time: 4005.4994354075743  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 4005.4994354075743
+generateNextArrival(): future time for event 1 at entity 0 will be 4058.400219733268
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 12
+aBaseOverall: 12
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 441  payload: mmmmmmmmmmmmmmmmmmmm
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 4005.4994354075743
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 4005.4994354075743
+After:
+nextSeqnumOverall: 13
+aBaseOverall: 12
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 4009.4059572130495  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 4012.9548631244847  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 12nextSeqnumOverall: 13
+aBaseOverall: 13nextSeqnumOverall: 13
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 4012.9548631244847
+
+EVENT time: 4058.400219733268  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 4058.400219733268
+generateNextArrival(): future time for event 1 at entity 0 will be 4080.3552354503004
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 13
+aBaseOverall: 13
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 462  payload: nnnnnnnnnnnnnnnnnnnn
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 4058.400219733268
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 4058.400219733268
+After:
+nextSeqnumOverall: 14
+aBaseOverall: 13
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 4067.956358531449  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 4070.6076540421764  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 13nextSeqnumOverall: 14
+aBaseOverall: 14nextSeqnumOverall: 14
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 4070.6076540421764
+
+EVENT time: 4080.3552354503004  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 4080.3552354503004
+generateNextArrival(): future time for event 1 at entity 0 will be 4608.447523422956
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 14
+aBaseOverall: 14
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 481  payload: oooooooooooooooooooo
+toLayer3: packet being lost
+stopTimer: stopping timer at 4080.3552354503004
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 4080.3552354503004
+After:
+nextSeqnumOverall: 15
+aBaseOverall: 14
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 4125.355235450301  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 481  payload: oooooooooooooooooooo
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 4125.355235450301
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 4125.355235450301
+
+EVENT time: 4129.739127780999  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 4170.355235450301  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 481  payload: oooooooooooooooooooo
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 4170.355235450301
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 4170.355235450301
+
+EVENT time: 4180.050355540636  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 4187.705526902067  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 14nextSeqnumOverall: 15
+aBaseOverall: 15nextSeqnumOverall: 15
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 4187.705526902067
+
+EVENT time: 4608.447523422956  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 4608.447523422956
+generateNextArrival(): future time for event 1 at entity 0 will be 4994.848475600452
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 15
+aBaseOverall: 15
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 502  payload: pppppppppppppppppppp
+toLayer3: packet being lost
+stopTimer: stopping timer at 4608.447523422956
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 4608.447523422956
+After:
+nextSeqnumOverall: 16
+aBaseOverall: 15
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 4653.447523422956  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 502  payload: pppppppppppppppppppp
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 4653.447523422956
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 4653.447523422956
+
+EVENT time: 4655.660725730155  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 4664.561784722434  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 15nextSeqnumOverall: 16
+aBaseOverall: 16nextSeqnumOverall: 16
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 4664.561784722434
+
+EVENT time: 4994.848475600452  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 4994.848475600452
+generateNextArrival(): future time for event 1 at entity 0 will be 5127.018036439101
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 16
+aBaseOverall: 16
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 521  payload: qqqqqqqqqqqqqqqqqqqq
+toLayer3: packet being lost
+stopTimer: stopping timer at 4994.848475600452
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 4994.848475600452
+After:
+nextSeqnumOverall: 17
+aBaseOverall: 16
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 5039.848475600452  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 521  payload: qqqqqqqqqqqqqqqqqqqq
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 5039.848475600452
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 5039.848475600452
+
+EVENT time: 5049.360942411573  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 5059.27552110355  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 16nextSeqnumOverall: 17
+aBaseOverall: 17nextSeqnumOverall: 17
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 5059.27552110355
+
+EVENT time: 5127.018036439101  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 5127.018036439101
+generateNextArrival(): future time for event 1 at entity 0 will be 5263.234351634266
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 17
+aBaseOverall: 17
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 542  payload: rrrrrrrrrrrrrrrrrrrr
+toLayer3: packet being lost
+stopTimer: stopping timer at 5127.018036439101
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 5127.018036439101
+After:
+nextSeqnumOverall: 18
+aBaseOverall: 17
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 5172.018036439101  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 542  payload: rrrrrrrrrrrrrrrrrrrr
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 5172.018036439101
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 5172.018036439101
+
+EVENT time: 5180.348612933745  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 5187.767845698417  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 17nextSeqnumOverall: 18
+aBaseOverall: 18nextSeqnumOverall: 18
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 5187.767845698417
+
+EVENT time: 5263.234351634266  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 5263.234351634266
+generateNextArrival(): future time for event 1 at entity 0 will be 5436.7503891109955
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 18
+aBaseOverall: 18
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 561  payload: ssssssssssssssssssss
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 5263.234351634266
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 5263.234351634266
+After:
+nextSeqnumOverall: 19
+aBaseOverall: 18
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 5272.832789086581  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 5308.234351634266  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 561  payload: ssssssssssssssssssss
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 5308.234351634266
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 5308.234351634266
+
+EVENT time: 5312.154606769005  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 5314.274422437208  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 18nextSeqnumOverall: 19
+aBaseOverall: 19nextSeqnumOverall: 19
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 5314.274422437208
+
+EVENT time: 5436.7503891109955  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 5436.7503891109955
+generateNextArrival(): future time for event 1 at entity 0 will be 5583.385723441267
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 19
+aBaseOverall: 19
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 582  payload: tttttttttttttttttttt
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 5436.7503891109955
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 5436.7503891109955
+After:
+nextSeqnumOverall: 20
+aBaseOverall: 19
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 5440.535508285775  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 5445.759331034272  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 19nextSeqnumOverall: 20
+aBaseOverall: 20nextSeqnumOverall: 20
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 5445.759331034272
+
+EVENT time: 5583.385723441267  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 5583.385723441267
+generateNextArrival(): future time for event 1 at entity 0 will be 6149.986266670736
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 20
+aBaseOverall: 20
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 601  payload: uuuuuuuuuuuuuuuuuuuu
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 5583.385723441267
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 5583.385723441267
+After:
+nextSeqnumOverall: 21
+aBaseOverall: 20
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 5590.03726310007  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 5591.535508285775  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 20nextSeqnumOverall: 21
+aBaseOverall: 21nextSeqnumOverall: 21
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 5591.535508285775
+
+EVENT time: 6149.986266670736  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 6149.986266670736
+generateNextArrival(): future time for event 1 at entity 0 will be 6236.030152287362
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 21
+aBaseOverall: 21
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 622  payload: vvvvvvvvvvvvvvvvvvvv
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 6149.986266670736
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6149.986266670736
+After:
+nextSeqnumOverall: 22
+aBaseOverall: 21
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 6152.131900997955  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 6157.55677968688  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 21nextSeqnumOverall: 22
+aBaseOverall: 22nextSeqnumOverall: 22
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 6157.55677968688
+
+EVENT time: 6236.030152287362  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 6236.030152287362
+generateNextArrival(): future time for event 1 at entity 0 will be 6434.485915707877
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 22
+aBaseOverall: 22
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 641  payload: wwwwwwwwwwwwwwwwwwww
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 6236.030152287362
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6236.030152287362
+After:
+nextSeqnumOverall: 23
+aBaseOverall: 22
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 6237.064485610523  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 6281.030152287362  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 641  payload: wwwwwwwwwwwwwwwwwwww
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 6281.030152287362
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6281.030152287362
+
+EVENT time: 6283.026367992187  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 6326.030152287362  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 641  payload: wwwwwwwwwwwwwwwwwwww
+toLayer3: packet being lost
+stopTimer: stopping timer at 6326.030152287362
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6326.030152287362
+
+EVENT time: 6371.030152287362  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 641  payload: wwwwwwwwwwwwwwwwwwww
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 6371.030152287362
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6371.030152287362
+
+EVENT time: 6375.695852534563  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 6416.030152287362  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 641  payload: wwwwwwwwwwwwwwwwwwww
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 6416.030152287362
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6416.030152287362
+
+EVENT time: 6419.123111667226  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 6425.408520767845  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 22nextSeqnumOverall: 23
+aBaseOverall: 23nextSeqnumOverall: 23
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 6425.408520767845
+
+EVENT time: 6434.485915707877  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 6434.485915707877
+generateNextArrival(): future time for event 1 at entity 0 will be 6522.41584521012
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 23
+aBaseOverall: 23
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 662  payload: xxxxxxxxxxxxxxxxxxxx
+toLayer3: packet being lost
+stopTimer: stopping timer at 6434.485915707877
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6434.485915707877
+After:
+nextSeqnumOverall: 24
+aBaseOverall: 23
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 6479.485915707877  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 662  payload: xxxxxxxxxxxxxxxxxxxx
+toLayer3: packet being lost
+stopTimer: stopping timer at 6479.485915707877
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6479.485915707877
+
+EVENT time: 6522.41584521012  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 6522.41584521012
+generateNextArrival(): future time for event 1 at entity 0 will be 6603.167821283609
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 24
+aBaseOverall: 23
+aIncommingSeqnum: 2
+After:
+nextSeqnumOverall: 24
+aBaseOverall: 23
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 6524.485915707877  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 662  payload: xxxxxxxxxxxxxxxxxxxx
+toLayer3: packet being lost
+stopTimer: stopping timer at 6524.485915707877
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6524.485915707877
+
+EVENT time: 6569.485915707877  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 662  payload: xxxxxxxxxxxxxxxxxxxx
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 6569.485915707877
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6569.485915707877
+
+EVENT time: 6570.850672933135  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 6578.744254890592  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 23nextSeqnumOverall: 24
+aBaseOverall: 24nextSeqnumOverall: 24
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 6578.744254890592
+
+EVENT time: 6603.167821283609  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 6603.167821283609
+generateNextArrival(): future time for event 1 at entity 0 will be 6942.271187475204
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 24
+aBaseOverall: 24
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 681  payload: yyyyyyyyyyyyyyyyyyyy
+toLayer3: packet being lost
+stopTimer: stopping timer at 6603.167821283609
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6603.167821283609
+After:
+nextSeqnumOverall: 25
+aBaseOverall: 24
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 6648.167821283609  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 681  payload: yyyyyyyyyyyyyyyyyyyy
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 6648.167821283609
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6648.167821283609
+
+EVENT time: 6652.698385570849  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 6693.167821283609  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 681  payload: yyyyyyyyyyyyyyyyyyyy
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 6693.167821283609
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6693.167821283609
+
+EVENT time: 6699.300241096225  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 6703.499008148443  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 24nextSeqnumOverall: 25
+aBaseOverall: 25nextSeqnumOverall: 25
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 6703.499008148443
+
+EVENT time: 6942.271187475204  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 6942.271187475204
+generateNextArrival(): future time for event 1 at entity 0 will be 7212.121951963866
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 25
+aBaseOverall: 25
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 702  payload: zzzzzzzzzzzzzzzzzzzz
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 6942.271187475204
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6942.271187475204
+After:
+nextSeqnumOverall: 26
+aBaseOverall: 25
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 6949.885433515427  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 6987.271187475204  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 702  payload: zzzzzzzzzzzzzzzzzzzz
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 6987.271187475204
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 6987.271187475204
+
+EVENT time: 6990.715445417646  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 7032.271187475204  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 702  payload: zzzzzzzzzzzzzzzzzzzz
+toLayer3: packet being lost
+stopTimer: stopping timer at 7032.271187475204
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 7032.271187475204
+
+EVENT time: 7077.271187475204  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 702  payload: zzzzzzzzzzzzzzzzzzzz
+toLayer3: packet being lost
+stopTimer: stopping timer at 7077.271187475204
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 7077.271187475204
+
+EVENT time: 7122.271187475204  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 702  payload: zzzzzzzzzzzzzzzzzzzz
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 7122.271187475204
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 7122.271187475204
+
+EVENT time: 7125.786584063235  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 7132.076937162389  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 25nextSeqnumOverall: 26
+aBaseOverall: 26nextSeqnumOverall: 26
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 7132.076937162389
+
+EVENT time: 7212.121951963866  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 7212.121951963866
+generateNextArrival(): future time for event 1 at entity 0 will be 7302.578814050722
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 26
+aBaseOverall: 26
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 201  payload: aaaaaaaaaaaaaaaaaaaa
+toLayer3: packet being lost
+stopTimer: stopping timer at 7212.121951963866
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 7212.121951963866
+After:
+nextSeqnumOverall: 27
+aBaseOverall: 26
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 7257.121951963866  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 201  payload: aaaaaaaaaaaaaaaaaaaa
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 7257.121951963866
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 7257.121951963866
+
+EVENT time: 7265.662373729667  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 7270.501937925352  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 26nextSeqnumOverall: 27
+aBaseOverall: 27nextSeqnumOverall: 27
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 7270.501937925352
+
+EVENT time: 7302.578814050722  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 7302.578814050722
+generateNextArrival(): future time for event 1 at entity 0 will be 7383.257545701468
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 27
+aBaseOverall: 27
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 222  payload: bbbbbbbbbbbbbbbbbbbb
+toLayer3: packet being lost
+stopTimer: stopping timer at 7302.578814050722
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 7302.578814050722
+After:
+nextSeqnumOverall: 28
+aBaseOverall: 27
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 7347.578814050722  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 222  payload: bbbbbbbbbbbbbbbbbbbb
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 7347.578814050722
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 7347.578814050722
+
+EVENT time: 7354.42811365093  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 7362.3631702627645  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 27nextSeqnumOverall: 28
+aBaseOverall: 28nextSeqnumOverall: 28
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 7362.3631702627645
+
+EVENT time: 7383.257545701468  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 7383.257545701468
+generateNextArrival(): future time for event 1 at entity 0 will be 7722.1228675191505
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 28
+aBaseOverall: 28
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 241  payload: cccccccccccccccccccc
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 7383.257545701468
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 7383.257545701468
+After:
+nextSeqnumOverall: 29
+aBaseOverall: 28
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 7386.934720908231  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 7388.727134006775  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 28nextSeqnumOverall: 29
+aBaseOverall: 29nextSeqnumOverall: 29
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 7388.727134006775
+
+EVENT time: 7722.1228675191505  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 7722.1228675191505
+generateNextArrival(): future time for event 1 at entity 0 will be 8012.628559221168
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 29
+aBaseOverall: 29
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 262  payload: dddddddddddddddddddd
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 7722.1228675191505
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 7722.1228675191505
+After:
+nextSeqnumOverall: 30
+aBaseOverall: 29
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 7731.577105014191  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 7733.484328745384  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 29nextSeqnumOverall: 30
+aBaseOverall: 30nextSeqnumOverall: 30
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 7733.484328745384
+
+EVENT time: 8012.628559221168  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 8012.628559221168
+generateNextArrival(): future time for event 1 at entity 0 will be 8446.858119449447
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 30
+aBaseOverall: 30
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 281  payload: eeeeeeeeeeeeeeeeeeee
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 8012.628559221168
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 8012.628559221168
+After:
+nextSeqnumOverall: 31
+aBaseOverall: 30
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 8022.34015930662  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 8057.628559221168  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 281  payload: eeeeeeeeeeeeeeeeeeee
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 8057.628559221168
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 8057.628559221168
+
+EVENT time: 8059.1875057222205  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 8102.628559221168  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 281  payload: eeeeeeeeeeeeeeeeeeee
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 8102.628559221168
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 8102.628559221168
+
+EVENT time: 8103.866695150609  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 8107.190923795282  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 30nextSeqnumOverall: 31
+aBaseOverall: 31nextSeqnumOverall: 31
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 8107.190923795282
+
+EVENT time: 8446.858119449447  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 8446.858119449447
+generateNextArrival(): future time for event 1 at entity 0 will be 8999.121066927093
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 31
+aBaseOverall: 31
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 302  payload: ffffffffffffffffffff
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 8446.858119449447
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 8446.858119449447
+After:
+nextSeqnumOverall: 32
+aBaseOverall: 31
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 8453.122653889584  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 8457.120090334789  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 31nextSeqnumOverall: 32
+aBaseOverall: 32nextSeqnumOverall: 32
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 8457.120090334789
+
+EVENT time: 8999.121066927093  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 8999.121066927093
+generateNextArrival(): future time for event 1 at entity 0 will be 9562.90169988098
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 32
+aBaseOverall: 32
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 321  payload: gggggggggggggggggggg
+toLayer3: packet being lost
+stopTimer: stopping timer at 8999.121066927093
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 8999.121066927093
+After:
+nextSeqnumOverall: 33
+aBaseOverall: 32
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 9044.121066927093  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 321  payload: gggggggggggggggggggg
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 9044.121066927093
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 9044.121066927093
+
+EVENT time: 9046.352671895507  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 9050.47013763848  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 32nextSeqnumOverall: 33
+aBaseOverall: 33nextSeqnumOverall: 33
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 9050.47013763848
+
+EVENT time: 9562.90169988098  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 9562.90169988098
+generateNextArrival(): future time for event 1 at entity 0 will be 9602.746665852843
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 33
+aBaseOverall: 33
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 342  payload: hhhhhhhhhhhhhhhhhhhh
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 9562.90169988098
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 9562.90169988098
+After:
+nextSeqnumOverall: 34
+aBaseOverall: 33
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 9572.255958738977  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 9602.746665852843  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 9602.746665852843
+generateNextArrival(): future time for event 1 at entity 0 will be 10080.8679464095
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 34
+aBaseOverall: 33
+aIncommingSeqnum: 1
+After:
+nextSeqnumOverall: 34
+aBaseOverall: 33
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 9607.90169988098  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 342  payload: hhhhhhhhhhhhhhhhhhhh
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 9607.90169988098
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 9607.90169988098
+
+EVENT time: 9609.670766319776  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 9613.734397412034  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 33nextSeqnumOverall: 34
+aBaseOverall: 34nextSeqnumOverall: 34
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 9613.734397412034
+
+EVENT time: 10080.8679464095  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 10080.8679464095
+generateNextArrival(): future time for event 1 at entity 0 will be 10632.966093935975
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 34
+aBaseOverall: 34
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 361  payload: iiiiiiiiiiiiiiiiiiii
+toLayer3: packet being lost
+stopTimer: stopping timer at 10080.8679464095
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 10080.8679464095
+After:
+nextSeqnumOverall: 35
+aBaseOverall: 34
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 10125.8679464095  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 361  payload: iiiiiiiiiiiiiiiiiiii
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 10125.8679464095
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 10125.8679464095
+
+EVENT time: 10135.198583941163  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 10145.10904263436  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 34nextSeqnumOverall: 35
+aBaseOverall: 35nextSeqnumOverall: 35
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 10145.10904263436
+
+EVENT time: 10632.966093935975  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 10632.966093935975
+generateNextArrival(): future time for event 1 at entity 0 will be 11210.498367259745
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 35
+aBaseOverall: 35
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 382  payload: jjjjjjjjjjjjjjjjjjjj
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 10632.966093935975
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 10632.966093935975
+After:
+nextSeqnumOverall: 36
+aBaseOverall: 35
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 10637.254402294995  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 10677.966093935975  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 382  payload: jjjjjjjjjjjjjjjjjjjj
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 10677.966093935975
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 10677.966093935975
+
+EVENT time: 10684.942564165169  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 10722.966093935975  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 382  payload: jjjjjjjjjjjjjjjjjjjj
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 10722.966093935975
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 10722.966093935975
+
+EVENT time: 10724.927426984468  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 10732.61391033662  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 35nextSeqnumOverall: 36
+aBaseOverall: 36nextSeqnumOverall: 36
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 10732.61391033662
+
+EVENT time: 11210.498367259745  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 11210.498367259745
+generateNextArrival(): future time for event 1 at entity 0 will be 11645.918149357587
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 36
+aBaseOverall: 36
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 401  payload: kkkkkkkkkkkkkkkkkkkk
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 11210.498367259745
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 11210.498367259745
+After:
+nextSeqnumOverall: 37
+aBaseOverall: 36
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 11212.385540330211  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 11214.855281228067  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 36nextSeqnumOverall: 37
+aBaseOverall: 37nextSeqnumOverall: 37
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 11214.855281228067
+
+EVENT time: 11645.918149357587  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 11645.918149357587
+generateNextArrival(): future time for event 1 at entity 0 will be 12241.303750724815
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 37
+aBaseOverall: 37
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 422  payload: llllllllllllllllllll
+toLayer3: packet being lost
+stopTimer: stopping timer at 11645.918149357587
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 11645.918149357587
+After:
+nextSeqnumOverall: 38
+aBaseOverall: 37
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 11690.918149357587  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 422  payload: llllllllllllllllllll
+toLayer3: packet being lost
+stopTimer: stopping timer at 11690.918149357587
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 11690.918149357587
+
+EVENT time: 11735.918149357587  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 422  payload: llllllllllllllllllll
+toLayer3: packet being lost
+stopTimer: stopping timer at 11735.918149357587
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 11735.918149357587
+
+EVENT time: 11780.918149357587  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 422  payload: llllllllllllllllllll
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 11780.918149357587
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 11780.918149357587
+
+EVENT time: 11783.488418225656  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 11789.898525955994  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 37nextSeqnumOverall: 38
+aBaseOverall: 38nextSeqnumOverall: 38
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 11789.898525955994
+
+EVENT time: 12241.303750724815  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 12241.303750724815
+generateNextArrival(): future time for event 1 at entity 0 will be 12513.663136692405
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 38
+aBaseOverall: 38
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 441  payload: mmmmmmmmmmmmmmmmmmmm
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 12241.303750724815
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 12241.303750724815
+After:
+nextSeqnumOverall: 39
+aBaseOverall: 38
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 12248.472487563708  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 12256.643757438887  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 38nextSeqnumOverall: 39
+aBaseOverall: 39nextSeqnumOverall: 39
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 12256.643757438887
+
+EVENT time: 12513.663136692405  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 12513.663136692405
+generateNextArrival(): future time for event 1 at entity 0 will be 12540.14099551378
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 39
+aBaseOverall: 39
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 462  payload: nnnnnnnnnnnnnnnnnnnn
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 12513.663136692405
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 12513.663136692405
+After:
+nextSeqnumOverall: 40
+aBaseOverall: 39
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 12521.02908413953  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 12540.14099551378  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 12540.14099551378
+generateNextArrival(): future time for event 1 at entity 0 will be 12786.315500350964
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 40
+aBaseOverall: 39
+aIncommingSeqnum: 2
+After:
+nextSeqnumOverall: 40
+aBaseOverall: 39
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 12558.663136692405  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 462  payload: nnnnnnnnnnnnnnnnnnnn
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 12558.663136692405
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 12558.663136692405
+
+EVENT time: 12561.183965575123  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 12570.193792535174  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 39nextSeqnumOverall: 40
+aBaseOverall: 40nextSeqnumOverall: 40
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 12570.193792535174
+
+EVENT time: 12786.315500350964  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 12786.315500350964
+generateNextArrival(): future time for event 1 at entity 0 will be 13158.415478988007
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 40
+aBaseOverall: 40
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 481  payload: oooooooooooooooooooo
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 12786.315500350964
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 12786.315500350964
+After:
+nextSeqnumOverall: 41
+aBaseOverall: 40
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 12791.338267159033  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 12798.335886715295  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 40nextSeqnumOverall: 41
+aBaseOverall: 41nextSeqnumOverall: 41
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 12798.335886715295
+
+EVENT time: 13158.415478988007  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 13158.415478988007
+generateNextArrival(): future time for event 1 at entity 0 will be 13319.077120273447
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 41
+aBaseOverall: 41
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 502  payload: pppppppppppppppppppp
+toLayer3: packet being lost
+stopTimer: stopping timer at 13158.415478988007
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 13158.415478988007
+After:
+nextSeqnumOverall: 42
+aBaseOverall: 41
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 13203.415478988007  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 502  payload: pppppppppppppppppppp
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 13203.415478988007
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 13203.415478988007
+
+EVENT time: 13207.747184667502  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 13210.93957335124  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 41nextSeqnumOverall: 42
+aBaseOverall: 42nextSeqnumOverall: 42
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 13210.93957335124
+
+EVENT time: 13319.077120273447  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 13319.077120273447
+generateNextArrival(): future time for event 1 at entity 0 will be 13559.831537827693
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 42
+aBaseOverall: 42
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 521  payload: qqqqqqqqqqqqqqqqqqqq
+toLayer3: packet being lost
+stopTimer: stopping timer at 13319.077120273447
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 13319.077120273447
+After:
+nextSeqnumOverall: 43
+aBaseOverall: 42
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 13364.077120273447  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 521  payload: qqqqqqqqqqqqqqqqqqqq
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 13364.077120273447
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 13364.077120273447
+
+EVENT time: 13373.459669789729  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 13378.223426007875  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 42nextSeqnumOverall: 43
+aBaseOverall: 43nextSeqnumOverall: 43
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 13378.223426007875
+
+EVENT time: 13559.831537827693  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 13559.831537827693
+generateNextArrival(): future time for event 1 at entity 0 will be 13949.015778069399
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 43
+aBaseOverall: 43
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 542  payload: rrrrrrrrrrrrrrrrrrrr
+toLayer3: packet being lost
+stopTimer: stopping timer at 13559.831537827693
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 13559.831537827693
+After:
+nextSeqnumOverall: 44
+aBaseOverall: 43
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 13604.831537827693  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 542  payload: rrrrrrrrrrrrrrrrrrrr
+toLayer3: packet being lost
+stopTimer: stopping timer at 13604.831537827693
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 13604.831537827693
+
+EVENT time: 13649.831537827693  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 542  payload: rrrrrrrrrrrrrrrrrrrr
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 13649.831537827693
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 13649.831537827693
+
+EVENT time: 13655.796685689871  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 13694.831537827693  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 542  payload: rrrrrrrrrrrrrrrrrrrr
+toLayer3: packet being lost
+stopTimer: stopping timer at 13694.831537827693
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 13694.831537827693
+
+EVENT time: 13739.831537827693  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 542  payload: rrrrrrrrrrrrrrrrrrrr
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 13739.831537827693
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 13739.831537827693
+
+EVENT time: 13746.955229346599  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 13784.831537827693  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 542  payload: rrrrrrrrrrrrrrrrrrrr
+toLayer3: packet being lost
+stopTimer: stopping timer at 13784.831537827693
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 13784.831537827693
+
+EVENT time: 13829.831537827693  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 542  payload: rrrrrrrrrrrrrrrrrrrr
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 13829.831537827693
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 13829.831537827693
+
+EVENT time: 13833.960264900663  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 13836.421491134373  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 43nextSeqnumOverall: 44
+aBaseOverall: 44nextSeqnumOverall: 44
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 13836.421491134373
+
+EVENT time: 13949.015778069399  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 13949.015778069399
+generateNextArrival(): future time for event 1 at entity 0 will be 14123.77697073275
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 44
+aBaseOverall: 44
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 561  payload: ssssssssssssssssssss
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 13949.015778069399
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 13949.015778069399
+After:
+nextSeqnumOverall: 45
+aBaseOverall: 44
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 13955.918637653736  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 13994.015778069399  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 561  payload: ssssssssssssssssssss
+toLayer3: packet being lost
+stopTimer: stopping timer at 13994.015778069399
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 13994.015778069399
+
+EVENT time: 14039.015778069399  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 561  payload: ssssssssssssssssssss
+toLayer3: packet being lost
+stopTimer: stopping timer at 14039.015778069399
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 14039.015778069399
+
+EVENT time: 14084.015778069399  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 561  payload: ssssssssssssssssssss
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 14084.015778069399
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 14084.015778069399
+
+EVENT time: 14090.632435071871  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 14096.99942014832  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 44nextSeqnumOverall: 45
+aBaseOverall: 45nextSeqnumOverall: 45
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 14096.99942014832
+
+EVENT time: 14123.77697073275  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 14123.77697073275
+generateNextArrival(): future time for event 1 at entity 0 will be 14199.877925962097
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 45
+aBaseOverall: 45
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 582  payload: tttttttttttttttttttt
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 14123.77697073275
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 14123.77697073275
+After:
+nextSeqnumOverall: 46
+aBaseOverall: 45
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 14131.36814477981  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 14132.86309396649  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 45nextSeqnumOverall: 46
+aBaseOverall: 46nextSeqnumOverall: 46
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 14132.86309396649
+
+EVENT time: 14199.877925962097  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 14199.877925962097
+generateNextArrival(): future time for event 1 at entity 0 will be 14394.76302377392
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 46
+aBaseOverall: 46
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 601  payload: uuuuuuuuuuuuuuuuuuuu
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 14199.877925962097
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 14199.877925962097
+After:
+nextSeqnumOverall: 47
+aBaseOverall: 46
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 14203.077730643636  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 14207.905209509569  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 46nextSeqnumOverall: 47
+aBaseOverall: 47nextSeqnumOverall: 47
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 14207.905209509569
+
+EVENT time: 14394.76302377392  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 14394.76302377392
+generateNextArrival(): future time for event 1 at entity 0 will be 14435.395367290263
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 47
+aBaseOverall: 47
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 622  payload: vvvvvvvvvvvvvvvvvvvv
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 14394.76302377392
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 14394.76302377392
+After:
+nextSeqnumOverall: 48
+aBaseOverall: 47
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 14397.902676473283  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 14435.395367290263  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 14435.395367290263
+generateNextArrival(): future time for event 1 at entity 0 will be 14728.794213690604
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 48
+aBaseOverall: 47
+aIncommingSeqnum: 1
+After:
+nextSeqnumOverall: 48
+aBaseOverall: 47
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 14439.76302377392  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 622  payload: vvvvvvvvvvvvvvvvvvvv
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 14439.76302377392
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 14439.76302377392
+
+EVENT time: 14442.03500473037  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 14484.76302377392  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 622  payload: vvvvvvvvvvvvvvvvvvvv
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 14484.76302377392
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 14484.76302377392
+
+EVENT time: 14486.691122165594  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 14495.243079927977  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 47nextSeqnumOverall: 48
+aBaseOverall: 48nextSeqnumOverall: 48
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 14495.243079927977
+
+EVENT time: 14728.794213690604  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 14728.794213690604
+generateNextArrival(): future time for event 1 at entity 0 will be 15291.970580156865
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 48
+aBaseOverall: 48
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 641  payload: wwwwwwwwwwwwwwwwwwww
+toLayer3: packet being lost
+stopTimer: stopping timer at 14728.794213690604
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 14728.794213690604
+After:
+nextSeqnumOverall: 49
+aBaseOverall: 48
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 14773.794213690604  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 641  payload: wwwwwwwwwwwwwwwwwwww
+toLayer3: packet being lost
+stopTimer: stopping timer at 14773.794213690604
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 14773.794213690604
+
+EVENT time: 14818.794213690604  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 641  payload: wwwwwwwwwwwwwwwwwwww
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 14818.794213690604
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 14818.794213690604
+
+EVENT time: 14824.451734977265  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 14827.85561693167  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 48nextSeqnumOverall: 49
+aBaseOverall: 49nextSeqnumOverall: 49
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 14827.85561693167
+
+EVENT time: 15291.970580156865  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 15291.970580156865
+generateNextArrival(): future time for event 1 at entity 0 will be 15376.659443952758
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 49
+aBaseOverall: 49
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 662  payload: xxxxxxxxxxxxxxxxxxxx
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 15291.970580156865
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 15291.970580156865
+After:
+nextSeqnumOverall: 50
+aBaseOverall: 49
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 15301.126255073703  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 15336.970580156865  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 662  payload: xxxxxxxxxxxxxxxxxxxx
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 15336.970580156865
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 15336.970580156865
+
+EVENT time: 15339.929776909696  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 15376.659443952758  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 15376.659443952758
+generateNextArrival(): future time for event 1 at entity 0 will be 15669.289223914304
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 50
+aBaseOverall: 49
+aIncommingSeqnum: 2
+After:
+nextSeqnumOverall: 50
+aBaseOverall: 49
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 15381.970580156865  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 662  payload: xxxxxxxxxxxxxxxxxxxx
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 15381.970580156865
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 15381.970580156865
+
+EVENT time: 15390.819177831354  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 15426.970580156865  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 662  payload: xxxxxxxxxxxxxxxxxxxx
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 15426.970580156865
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 15426.970580156865
+
+EVENT time: 15429.117313150426  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 15435.364818262276  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 49nextSeqnumOverall: 50
+aBaseOverall: 50nextSeqnumOverall: 50
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 15435.364818262276
+
+EVENT time: 15669.289223914304  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 15669.289223914304
+generateNextArrival(): future time for event 1 at entity 0 will be 16235.32212286752
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 50
+aBaseOverall: 50
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 681  payload: yyyyyyyyyyyyyyyyyyyy
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 15669.289223914304
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 15669.289223914304
+After:
+nextSeqnumOverall: 51
+aBaseOverall: 50
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 15679.178807947019  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 15680.572130497145  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 50nextSeqnumOverall: 51
+aBaseOverall: 51nextSeqnumOverall: 51
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 15680.572130497145
+
+EVENT time: 16235.32212286752  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 16235.32212286752
+generateNextArrival(): future time for event 1 at entity 0 will be 16459.523300881985
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 51
+aBaseOverall: 51
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 702  payload: zzzzzzzzzzzzzzzzzzzz
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 16235.32212286752
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 16235.32212286752
+After:
+nextSeqnumOverall: 52
+aBaseOverall: 51
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 16237.949522385326  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 16280.32212286752  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 702  payload: zzzzzzzzzzzzzzzzzzzz
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 16280.32212286752
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 16280.32212286752
+
+EVENT time: 16285.017212439345  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 16287.726737266152  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 51nextSeqnumOverall: 52
+aBaseOverall: 52nextSeqnumOverall: 52
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 16287.726737266152
+
+EVENT time: 16459.523300881985  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 16459.523300881985
+generateNextArrival(): future time for event 1 at entity 0 will be 16735.81957457198
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 52
+aBaseOverall: 52
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 201  payload: aaaaaaaaaaaaaaaaaaaa
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 16459.523300881985
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 16459.523300881985
+After:
+nextSeqnumOverall: 53
+aBaseOverall: 52
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 16468.74791711173  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 16471.55110324412  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 52nextSeqnumOverall: 53
+aBaseOverall: 53nextSeqnumOverall: 53
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 16471.55110324412
+
+EVENT time: 16735.81957457198  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 16735.81957457198
+generateNextArrival(): future time for event 1 at entity 0 will be 16922.684408093508
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 53
+aBaseOverall: 53
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 222  payload: bbbbbbbbbbbbbbbbbbbb
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 16735.81957457198
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 16735.81957457198
+After:
+nextSeqnumOverall: 54
+aBaseOverall: 53
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 16740.423749504076  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 16780.81957457198  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 222  payload: bbbbbbbbbbbbbbbbbbbb
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 16780.81957457198
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 16780.81957457198
+
+EVENT time: 16788.908444471574  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 16825.81957457198  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 222  payload: bbbbbbbbbbbbbbbbbbbb
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 16825.81957457198
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 16825.81957457198
+
+EVENT time: 16834.789025543992  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 16870.81957457198  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 222  payload: bbbbbbbbbbbbbbbbbbbb
+toLayer3: packet being lost
+stopTimer: stopping timer at 16870.81957457198
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 16870.81957457198
+
+EVENT time: 16915.81957457198  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 222  payload: bbbbbbbbbbbbbbbbbbbb
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 16915.81957457198
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 16915.81957457198
+
+EVENT time: 16921.762199774163  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 16922.684408093508  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 16922.684408093508
+generateNextArrival(): future time for event 1 at entity 0 will be 17013.928647724846
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 54
+aBaseOverall: 53
+aIncommingSeqnum: 1
+After:
+nextSeqnumOverall: 54
+aBaseOverall: 53
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 16960.81957457198  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 222  payload: bbbbbbbbbbbbbbbbbbbb
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 16960.81957457198
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 16960.81957457198
+
+EVENT time: 16967.844111453596  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 16969.368449964903  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 53nextSeqnumOverall: 54
+aBaseOverall: 54nextSeqnumOverall: 54
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 16969.368449964903
+
+EVENT time: 17013.928647724846  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 17013.928647724846
+generateNextArrival(): future time for event 1 at entity 0 will be 17286.086611529892
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 54
+aBaseOverall: 54
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 241  payload: cccccccccccccccccccc
+toLayer3: packet being lost
+stopTimer: stopping timer at 17013.928647724846
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 17013.928647724846
+After:
+nextSeqnumOverall: 55
+aBaseOverall: 54
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 17058.928647724846  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 241  payload: cccccccccccccccccccc
+toLayer3: packet being lost
+stopTimer: stopping timer at 17058.928647724846
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 17058.928647724846
+
+EVENT time: 17103.928647724846  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 241  payload: cccccccccccccccccccc
+toLayer3: packet being lost
+stopTimer: stopping timer at 17103.928647724846
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 17103.928647724846
+
+EVENT time: 17148.928647724846  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 241  payload: cccccccccccccccccccc
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 17148.928647724846
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 17148.928647724846
+
+EVENT time: 17153.712729270304  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 17193.928647724846  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 241  payload: cccccccccccccccccccc
+toLayer3: packet being lost
+stopTimer: stopping timer at 17193.928647724846
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 17193.928647724846
+
+EVENT time: 17238.928647724846  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 241  payload: cccccccccccccccccccc
+toLayer3: packet being lost
+stopTimer: stopping timer at 17238.928647724846
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 17238.928647724846
+
+EVENT time: 17283.928647724846  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 241  payload: cccccccccccccccccccc
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 17283.928647724846
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 17283.928647724846
+
+EVENT time: 17286.086611529892  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 17286.086611529892
+generateNextArrival(): future time for event 1 at entity 0 will be 17769.77446821497
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 55
+aBaseOverall: 54
+aIncommingSeqnum: 1
+After:
+nextSeqnumOverall: 55
+aBaseOverall: 54
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 17287.402844325083  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 17288.493484298226  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 54nextSeqnumOverall: 55
+aBaseOverall: 55nextSeqnumOverall: 55
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 17288.493484298226
+
+EVENT time: 17769.77446821497  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 17769.77446821497
+generateNextArrival(): future time for event 1 at entity 0 will be 18026.40461439863
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 55
+aBaseOverall: 55
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 262  payload: dddddddddddddddddddd
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 17769.77446821497
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 17769.77446821497
+After:
+nextSeqnumOverall: 56
+aBaseOverall: 55
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 17778.994964445934  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 17814.77446821497  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 262  payload: dddddddddddddddddddd
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 17814.77446821497
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 17814.77446821497
+
+EVENT time: 17822.068178350168  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 17859.77446821497  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 262  payload: dddddddddddddddddddd
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 17859.77446821497
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 17859.77446821497
+
+EVENT time: 17866.315866573077  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 17904.77446821497  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 262  payload: dddddddddddddddddddd
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 17904.77446821497
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 17904.77446821497
+
+EVENT time: 17909.216315195164  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 17914.622791222875  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 55nextSeqnumOverall: 56
+aBaseOverall: 56nextSeqnumOverall: 56
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 17914.622791222875
+
+EVENT time: 18026.40461439863  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 18026.40461439863
+generateNextArrival(): future time for event 1 at entity 0 will be 18561.436811426127
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 56
+aBaseOverall: 56
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 281  payload: eeeeeeeeeeeeeeeeeeee
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 18026.40461439863
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 18026.40461439863
+After:
+nextSeqnumOverall: 57
+aBaseOverall: 56
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 18035.262276070436  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 18036.373516037474  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 56nextSeqnumOverall: 57
+aBaseOverall: 57nextSeqnumOverall: 57
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 18036.373516037474
+
+EVENT time: 18561.436811426127  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 18561.436811426127
+generateNextArrival(): future time for event 1 at entity 0 will be 18605.914487136444
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 57
+aBaseOverall: 57
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 302  payload: ffffffffffffffffffff
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 18561.436811426127
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 18561.436811426127
+After:
+nextSeqnumOverall: 58
+aBaseOverall: 57
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 18567.326425977353  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 18576.023957029938  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 57nextSeqnumOverall: 58
+aBaseOverall: 58nextSeqnumOverall: 58
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 18576.023957029938
+
+EVENT time: 18605.914487136444  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 18605.914487136444
+generateNextArrival(): future time for event 1 at entity 0 will be 18736.9304483169
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 58
+aBaseOverall: 58
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 321  payload: gggggggggggggggggggg
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 18605.914487136444
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 18605.914487136444
+After:
+nextSeqnumOverall: 59
+aBaseOverall: 58
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 18614.79714346751  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 18617.777489547407  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 58nextSeqnumOverall: 59
+aBaseOverall: 59nextSeqnumOverall: 59
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 18617.777489547407
+
+EVENT time: 18736.9304483169  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 18736.9304483169
+generateNextArrival(): future time for event 1 at entity 0 will be 18944.999542222355
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 59
+aBaseOverall: 59
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 342  payload: hhhhhhhhhhhhhhhhhhhh
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 18736.9304483169
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 18736.9304483169
+After:
+nextSeqnumOverall: 60
+aBaseOverall: 59
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 18742.732169560833  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 18745.31260109256  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 59nextSeqnumOverall: 60
+aBaseOverall: 60nextSeqnumOverall: 60
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 18745.31260109256
+
+EVENT time: 18944.999542222355  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 18944.999542222355
+generateNextArrival(): future time for event 1 at entity 0 will be 18982.537308877832
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 60
+aBaseOverall: 60
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 361  payload: iiiiiiiiiiiiiiiiiiii
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 18944.999542222355
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 18944.999542222355
+After:
+nextSeqnumOverall: 61
+aBaseOverall: 60
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 18948.396282845544  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 18954.91653187658  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 60nextSeqnumOverall: 61
+aBaseOverall: 61nextSeqnumOverall: 61
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 18954.91653187658
+
+EVENT time: 18982.537308877832  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 18982.537308877832
+generateNextArrival(): future time for event 1 at entity 0 will be 19542.381054109315
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 61
+aBaseOverall: 61
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 382  payload: jjjjjjjjjjjjjjjjjjjj
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 18982.537308877832
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 18982.537308877832
+After:
+nextSeqnumOverall: 62
+aBaseOverall: 61
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 18985.71156956694  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 19027.537308877832  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 382  payload: jjjjjjjjjjjjjjjjjjjj
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 19027.537308877832
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 19027.537308877832
+
+EVENT time: 19030.16690572832  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 19031.773918881798  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 61nextSeqnumOverall: 62
+aBaseOverall: 62nextSeqnumOverall: 62
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 19031.773918881798
+
+EVENT time: 19542.381054109315  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 19542.381054109315
+generateNextArrival(): future time for event 1 at entity 0 will be 20098.416089358194
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 62
+aBaseOverall: 62
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 401  payload: kkkkkkkkkkkkkkkkkkkk
+toLayer3: packet being lost
+stopTimer: stopping timer at 19542.381054109315
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 19542.381054109315
+After:
+nextSeqnumOverall: 63
+aBaseOverall: 62
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 19587.381054109315  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 401  payload: kkkkkkkkkkkkkkkkkkkk
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 19587.381054109315
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 19587.381054109315
+
+EVENT time: 19590.886562700274  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 19598.741142002622  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 62nextSeqnumOverall: 63
+aBaseOverall: 63nextSeqnumOverall: 63
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 19598.741142002622
+
+EVENT time: 20098.416089358194  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 20098.416089358194
+generateNextArrival(): future time for event 1 at entity 0 will be 20570.71443830683
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 63
+aBaseOverall: 63
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 422  payload: llllllllllllllllllll
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 20098.416089358194
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 20098.416089358194
+After:
+nextSeqnumOverall: 64
+aBaseOverall: 63
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 20101.95318460646  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 20143.416089358194  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 422  payload: llllllllllllllllllll
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 20143.416089358194
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 20143.416089358194
+
+EVENT time: 20145.074739829706  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 20154.948393200477  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 63nextSeqnumOverall: 64
+aBaseOverall: 64nextSeqnumOverall: 64
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 20154.948393200477
+
+EVENT time: 20570.71443830683  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 20570.71443830683
+generateNextArrival(): future time for event 1 at entity 0 will be 20997.766045106353
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 64
+aBaseOverall: 64
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 441  payload: mmmmmmmmmmmmmmmmmmmm
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 20570.71443830683
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 20570.71443830683
+After:
+nextSeqnumOverall: 65
+aBaseOverall: 64
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 20578.60335093234  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 20581.15933713797  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 64nextSeqnumOverall: 65
+aBaseOverall: 65nextSeqnumOverall: 65
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 20581.15933713797
+
+EVENT time: 20997.766045106353  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 20997.766045106353
+generateNextArrival(): future time for event 1 at entity 0 will be 21496.10278633991
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 65
+aBaseOverall: 65
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 462  payload: nnnnnnnnnnnnnnnnnnnn
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 20997.766045106353
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 20997.766045106353
+After:
+nextSeqnumOverall: 66
+aBaseOverall: 65
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 21004.07947019867  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 21010.829889828176  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 65nextSeqnumOverall: 66
+aBaseOverall: 66nextSeqnumOverall: 66
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 21010.829889828176
+
+EVENT time: 21496.10278633991  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 21496.10278633991
+generateNextArrival(): future time for event 1 at entity 0 will be 21906.65608691671
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 66
+aBaseOverall: 66
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 481  payload: oooooooooooooooooooo
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 21496.10278633991
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 21496.10278633991
+After:
+nextSeqnumOverall: 67
+aBaseOverall: 66
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 21502.56508072145  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 21506.016479995113  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 66nextSeqnumOverall: 67
+aBaseOverall: 67nextSeqnumOverall: 67
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 21506.016479995113
+
+EVENT time: 21906.65608691671  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 21906.65608691671
+generateNextArrival(): future time for event 1 at entity 0 will be 22166.16107669301
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 67
+aBaseOverall: 67
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 502  payload: pppppppppppppppppppp
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 21906.65608691671
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 21906.65608691671
+After:
+nextSeqnumOverall: 68
+aBaseOverall: 67
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 21908.421582689898  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 21912.01855525376  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 67nextSeqnumOverall: 68
+aBaseOverall: 68nextSeqnumOverall: 68
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 21912.01855525376
+
+EVENT time: 22166.16107669301  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 22166.16107669301
+generateNextArrival(): future time for event 1 at entity 0 will be 22512.515640736103
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 68
+aBaseOverall: 68
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 521  payload: qqqqqqqqqqqqqqqqqqqq
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 22166.16107669301
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 22166.16107669301
+After:
+nextSeqnumOverall: 69
+aBaseOverall: 68
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 22170.55952635273  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 22211.16107669301  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 521  payload: qqqqqqqqqqqqqqqqqqqq
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 22211.16107669301
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 22211.16107669301
+
+EVENT time: 22219.709738456368  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 22256.16107669301  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 521  payload: qqqqqqqqqqqqqqqqqqqq
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 22256.16107669301
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 22256.16107669301
+
+EVENT time: 22263.480056154054  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 22267.290719321267  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 68nextSeqnumOverall: 69
+aBaseOverall: 69nextSeqnumOverall: 69
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 22267.290719321267
+
+EVENT time: 22512.515640736103  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 22512.515640736103
+generateNextArrival(): future time for event 1 at entity 0 will be 22999.591051973017
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 69
+aBaseOverall: 69
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 542  payload: rrrrrrrrrrrrrrrrrrrr
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 22512.515640736103
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 22512.515640736103
+After:
+nextSeqnumOverall: 70
+aBaseOverall: 69
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 22519.203985717333  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 22521.179326761678  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 69nextSeqnumOverall: 70
+aBaseOverall: 70nextSeqnumOverall: 70
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 22521.179326761678
+
+EVENT time: 22999.591051973017  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 22999.591051973017
+generateNextArrival(): future time for event 1 at entity 0 will be 23514.352855006557
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 70
+aBaseOverall: 70
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 561  payload: ssssssssssssssssssss
+toLayer3: packet being lost
+stopTimer: stopping timer at 22999.591051973017
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 22999.591051973017
+After:
+nextSeqnumOverall: 71
+aBaseOverall: 70
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 23044.591051973017  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 561  payload: ssssssssssssssssssss
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 23044.591051973017
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 23044.591051973017
+
+EVENT time: 23046.727347636337  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 23055.358958708453  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 70nextSeqnumOverall: 71
+aBaseOverall: 71nextSeqnumOverall: 71
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 23055.358958708453
+
+EVENT time: 23514.352855006557  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 23514.352855006557
+generateNextArrival(): future time for event 1 at entity 0 will be 23560.405285805835
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 71
+aBaseOverall: 71
+aIncommingSeqnum: 2
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 582  payload: tttttttttttttttttttt
+toLayer3: packet being lost
+stopTimer: stopping timer at 23514.352855006557
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 23514.352855006557
+After:
+nextSeqnumOverall: 72
+aBaseOverall: 71
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 23559.352855006557  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 582  payload: tttttttttttttttttttt
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 23559.352855006557
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 23559.352855006557
+
+EVENT time: 23560.370433668017  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 23560.405285805835  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 23560.405285805835
+generateNextArrival(): future time for event 1 at entity 0 will be 24159.068575090787
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 72
+aBaseOverall: 71
+aIncommingSeqnum: 1
+After:
+nextSeqnumOverall: 72
+aBaseOverall: 71
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 23564.063539536724  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 71nextSeqnumOverall: 72
+aBaseOverall: 72nextSeqnumOverall: 72
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 23564.063539536724
+
+EVENT time: 24159.068575090787  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 24159.068575090787
+generateNextArrival(): future time for event 1 at entity 0 will be 24231.049531540873
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 72
+aBaseOverall: 72
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 601  payload: uuuuuuuuuuuuuuuuuuuu
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 24159.068575090787
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 24159.068575090787
+After:
+nextSeqnumOverall: 73
+aBaseOverall: 72
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 24166.853389080472  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 24168.547471541486  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 72nextSeqnumOverall: 73
+aBaseOverall: 73nextSeqnumOverall: 73
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 24168.547471541486
+
+EVENT time: 24231.049531540873  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 24231.049531540873
+generateNextArrival(): future time for event 1 at entity 0 will be 24751.98217719046
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 73
+aBaseOverall: 73
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 622  payload: vvvvvvvvvvvvvvvvvvvv
+toLayer3: packet being lost
+stopTimer: stopping timer at 24231.049531540873
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 24231.049531540873
+After:
+nextSeqnumOverall: 74
+aBaseOverall: 73
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 24276.049531540873  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 622  payload: vvvvvvvvvvvvvvvvvvvv
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 24276.049531540873
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 24276.049531540873
+
+EVENT time: 24280.810541093168  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 24321.049531540873  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 622  payload: vvvvvvvvvvvvvvvvvvvv
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 24321.049531540873
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 24321.049531540873
+
+EVENT time: 24329.455366679886  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 24336.25193029572  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 73nextSeqnumOverall: 74
+aBaseOverall: 74nextSeqnumOverall: 74
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 24336.25193029572
+
+EVENT time: 24751.98217719046  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 24751.98217719046
+generateNextArrival(): future time for event 1 at entity 0 will be 25278.298287911613
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 74
+aBaseOverall: 74
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 641  payload: wwwwwwwwwwwwwwwwwwww
+toLayer3: packet being lost
+stopTimer: stopping timer at 24751.98217719046
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 24751.98217719046
+After:
+nextSeqnumOverall: 75
+aBaseOverall: 74
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 24796.98217719046  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 641  payload: wwwwwwwwwwwwwwwwwwww
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 24796.98217719046
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 24796.98217719046
+
+EVENT time: 24802.0521866512  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 24804.464247566142  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 74nextSeqnumOverall: 75
+aBaseOverall: 75nextSeqnumOverall: 75
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 24804.464247566142
+
+EVENT time: 25278.298287911613  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 25278.298287911613
+generateNextArrival(): future time for event 1 at entity 0 will be 25596.819971312598
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 75
+aBaseOverall: 75
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 662  payload: xxxxxxxxxxxxxxxxxxxx
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 25278.298287911613
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 25278.298287911613
+After:
+nextSeqnumOverall: 76
+aBaseOverall: 75
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 25284.243934446236  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 25287.20368053224  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 75nextSeqnumOverall: 76
+aBaseOverall: 76nextSeqnumOverall: 76
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 25287.20368053224
+
+EVENT time: 25596.819971312598  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 25596.819971312598
+generateNextArrival(): future time for event 1 at entity 0 will be 25853.999450666826
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 76
+aBaseOverall: 76
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 681  payload: yyyyyyyyyyyyyyyyyyyy
+toLayer3: packet being lost
+stopTimer: stopping timer at 25596.819971312598
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 25596.819971312598
+After:
+nextSeqnumOverall: 77
+aBaseOverall: 76
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 25641.819971312598  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 681  payload: yyyyyyyyyyyyyyyyyyyy
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 25641.819971312598
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 25641.819971312598
+
+EVENT time: 25646.963866084778  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 25651.879512924585  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 76nextSeqnumOverall: 77
+aBaseOverall: 77nextSeqnumOverall: 77
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 25651.879512924585
+
+EVENT time: 25853.999450666826  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 25853.999450666826
+generateNextArrival(): future time for event 1 at entity 0 will be 25897.451704458752
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 77
+aBaseOverall: 77
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 702  payload: zzzzzzzzzzzzzzzzzzzz
+toLayer3: packet being lost
+stopTimer: stopping timer at 25853.999450666826
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 25853.999450666826
+After:
+nextSeqnumOverall: 78
+aBaseOverall: 77
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 25897.451704458752  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 25897.451704458752
+generateNextArrival(): future time for event 1 at entity 0 will be 26457.35038300729
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 78
+aBaseOverall: 77
+aIncommingSeqnum: 2
+After:
+nextSeqnumOverall: 78
+aBaseOverall: 77
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 25898.999450666826  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 702  payload: zzzzzzzzzzzzzzzzzzzz
+toLayer3: packet being lost
+stopTimer: stopping timer at 25898.999450666826
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 25898.999450666826
+
+EVENT time: 25943.999450666826  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 702  payload: zzzzzzzzzzzzzzzzzzzz
+toLayer3: packet being lost
+stopTimer: stopping timer at 25943.999450666826
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 25943.999450666826
+
+EVENT time: 25988.999450666826  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 702  payload: zzzzzzzzzzzzzzzzzzzz
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 25988.999450666826
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 25988.999450666826
+
+EVENT time: 25994.226569414346  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 26033.999450666826  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 702  payload: zzzzzzzzzzzzzzzzzzzz
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 26033.999450666826
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 26033.999450666826
+
+EVENT time: 26036.56120487075  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 26037.729300820945  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 77nextSeqnumOverall: 78
+aBaseOverall: 78nextSeqnumOverall: 78
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 26037.729300820945
+
+EVENT time: 26457.35038300729  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 26457.35038300729
+generateNextArrival(): future time for event 1 at entity 0 will be 26532.15124973296
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 78
+aBaseOverall: 78
+aIncommingSeqnum: 1
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 201  payload: aaaaaaaaaaaaaaaaaaaa
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 26457.35038300729
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 26457.35038300729
+After:
+nextSeqnumOverall: 79
+aBaseOverall: 78
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 26465.22693563646  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 26502.35038300729  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 201  payload: aaaaaaaaaaaaaaaaaaaa
+toLayer3: packet being lost
+stopTimer: stopping timer at 26502.35038300729
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 26502.35038300729
+
+EVENT time: 26532.15124973296  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 26532.15124973296
+generateNextArrival(): future time for event 1 at entity 0 will be 26725.241859187594
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 79
+aBaseOverall: 78
+aIncommingSeqnum: 2
+After:
+nextSeqnumOverall: 79
+aBaseOverall: 78
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 26547.35038300729  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 201  payload: aaaaaaaaaaaaaaaaaaaa
+toLayer3: packet being lost
+stopTimer: stopping timer at 26547.35038300729
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 26547.35038300729
+
+EVENT time: 26592.35038300729  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 201  payload: aaaaaaaaaaaaaaaaaaaa
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 26592.35038300729
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 26592.35038300729
+
+EVENT time: 26598.711874752036  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 26637.35038300729  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 201  payload: aaaaaaaaaaaaaaaaaaaa
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 26637.35038300729
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 26637.35038300729
+
+EVENT time: 26643.65337076937  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: packet being lost
+
+EVENT time: 26682.35038300729  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 201  payload: aaaaaaaaaaaaaaaaaaaa
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 26682.35038300729
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 26682.35038300729
+
+EVENT time: 26684.188116092406  type: 2  entity: 1
+B, not in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 26692.295113986627  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 78nextSeqnumOverall: 79
+aBaseOverall: 79nextSeqnumOverall: 79
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 26692.295113986627
+
+EVENT time: 26725.241859187594  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 26725.241859187594
+generateNextArrival(): future time for event 1 at entity 0 will be 27136.21631519516
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 79
+aBaseOverall: 79
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 222  payload: bbbbbbbbbbbbbbbbbbbb
+toLayer3: packet being lost
+stopTimer: stopping timer at 26725.241859187594
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 26725.241859187594
+After:
+nextSeqnumOverall: 80
+aBaseOverall: 79
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 26770.241859187594  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 222  payload: bbbbbbbbbbbbbbbbbbbb
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 26770.241859187594
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 26770.241859187594
+
+EVENT time: 26775.271492660297  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 26782.36799218726  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 79nextSeqnumOverall: 80
+aBaseOverall: 80nextSeqnumOverall: 80
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 26782.36799218726
+
+EVENT time: 27136.21631519516  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 27136.21631519516
+generateNextArrival(): future time for event 1 at entity 0 will be 27682.290108951074
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 80
+aBaseOverall: 80
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 241  payload: cccccccccccccccccccc
+toLayer3: packet being lost
+stopTimer: stopping timer at 27136.21631519516
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 27136.21631519516
+After:
+nextSeqnumOverall: 81
+aBaseOverall: 80
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 27181.21631519516  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 241  payload: cccccccccccccccccccc
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 27181.21631519516
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 27181.21631519516
+
+EVENT time: 27187.948606830036  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 27196.435468611708  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 80nextSeqnumOverall: 81
+aBaseOverall: 81nextSeqnumOverall: 81
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 27196.435468611708
+
+EVENT time: 27682.290108951074  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 27682.290108951074
+generateNextArrival(): future time for event 1 at entity 0 will be 27793.456831568343
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 81
+aBaseOverall: 81
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 262  payload: dddddddddddddddddddd
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 27682.290108951074
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 27682.290108951074
+After:
+nextSeqnumOverall: 82
+aBaseOverall: 81
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 27691.991821039457  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 27694.471175267798  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 81nextSeqnumOverall: 82
+aBaseOverall: 82nextSeqnumOverall: 82
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 27694.471175267798
+
+EVENT time: 27793.456831568343  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 27793.456831568343
+generateNextArrival(): future time for event 1 at entity 0 will be 28088.357188634902
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 82
+aBaseOverall: 82
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 281  payload: eeeeeeeeeeeeeeeeeeee
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 27793.456831568343
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 27793.456831568343
+After:
+nextSeqnumOverall: 83
+aBaseOverall: 82
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 27798.420545060577  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 27807.02139347514  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 82nextSeqnumOverall: 83
+aBaseOverall: 83nextSeqnumOverall: 83
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 27807.02139347514
+
+EVENT time: 28088.357188634902  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 28088.357188634902
+generateNextArrival(): future time for event 1 at entity 0 will be 28585.39384136478
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 83
+aBaseOverall: 83
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 302  payload: ffffffffffffffffffff
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 28088.357188634902
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 28088.357188634902
+After:
+nextSeqnumOverall: 84
+aBaseOverall: 83
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 28091.15982543412  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: packet being lost
+
+EVENT time: 28133.357188634902  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 302  payload: ffffffffffffffffffff
+toLayer3: packet being lost
+stopTimer: stopping timer at 28133.357188634902
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 28133.357188634902
+
+EVENT time: 28178.357188634902  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 302  payload: ffffffffffffffffffff
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 28178.357188634902
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 28178.357188634902
+
+EVENT time: 28186.203802606276  type: 2  entity: 1
+B, not in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 28196.08459730826  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 83nextSeqnumOverall: 84
+aBaseOverall: 84nextSeqnumOverall: 84
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 28196.08459730826
+
+EVENT time: 28585.39384136478  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 28585.39384136478
+generateNextArrival(): future time for event 1 at entity 0 will be 29141.776787621686
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 84
+aBaseOverall: 84
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 321  payload: gggggggggggggggggggg
+toLayer3: packet being lost
+stopTimer: stopping timer at 28585.39384136478
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 28585.39384136478
+After:
+nextSeqnumOverall: 85
+aBaseOverall: 84
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 28630.39384136478  type: 0  entity: 0
+A, timeout
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 321  payload: gggggggggggggggggggg
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 28630.39384136478
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 28630.39384136478
+
+EVENT time: 28631.520462660596  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 28637.933866389958  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 84nextSeqnumOverall: 85
+aBaseOverall: 85nextSeqnumOverall: 85
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 28637.933866389958
+
+EVENT time: 29141.776787621686  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 29141.776787621686
+generateNextArrival(): future time for event 1 at entity 0 will be 29372.698141422767
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 85
+aBaseOverall: 85
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 342  payload: hhhhhhhhhhhhhhhhhhhh
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 29141.776787621686
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 29141.776787621686
+After:
+nextSeqnumOverall: 86
+aBaseOverall: 85
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 29149.007873775437  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 29158.174810022272  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 85nextSeqnumOverall: 86
+aBaseOverall: 86nextSeqnumOverall: 86
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 29158.174810022272
+
+EVENT time: 29372.698141422767  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 29372.698141422767
+generateNextArrival(): future time for event 1 at entity 0 will be 29744.70656453138
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 86
+aBaseOverall: 86
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 361  payload: iiiiiiiiiiiiiiiiiiii
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 29372.698141422767
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 29372.698141422767
+After:
+nextSeqnumOverall: 87
+aBaseOverall: 86
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 29380.136051515237  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 29383.738517410802  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 86nextSeqnumOverall: 87
+aBaseOverall: 87nextSeqnumOverall: 87
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 29383.738517410802
+
+EVENT time: 29744.70656453138  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 29744.70656453138
+generateNextArrival(): future time for event 1 at entity 0 will be 29930.28962065492
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 87
+aBaseOverall: 87
+aIncommingSeqnum: 1
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 382  payload: jjjjjjjjjjjjjjjjjjjj
+toLayer3: packet being lost
+stopTimer: stopping timer at 29744.70656453138
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 29744.70656453138
+After:
+nextSeqnumOverall: 88
+aBaseOverall: 87
+aIncommingSeqnum: 2
+--------------------------
+
+EVENT time: 29789.70656453138  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 382  payload: jjjjjjjjjjjjjjjjjjjj
+toLayer3: packet being lost
+stopTimer: stopping timer at 29789.70656453138
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 29789.70656453138
+
+EVENT time: 29834.70656453138  type: 0  entity: 0
+A, timeout
+A, send: 2
+toLayer3: seqnum: 2  acknum: 0  checksum: 382  payload: jjjjjjjjjjjjjjjjjjjj
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 29834.70656453138
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 29834.70656453138
+
+EVENT time: 29842.555375835436  type: 2  entity: 1
+B, in order: 2
+B, send ACK: 2
+toLayer3: seqnum: 0  acknum: 2  checksum: 2  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 29844.73506881923  type: 2  entity: 0
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 87nextSeqnumOverall: 88
+aBaseOverall: 88nextSeqnumOverall: 88
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 29844.73506881923
+
+EVENT time: 29930.28962065492  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 29930.28962065492
+generateNextArrival(): future time for event 1 at entity 0 will be 30186.773277993096
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 88
+aBaseOverall: 88
+aIncommingSeqnum: 2
+A, send: 1
+toLayer3: seqnum: 1  acknum: 0  checksum: 401  payload: kkkkkkkkkkkkkkkkkkkk
+toLayer3: scheduling arrival on other side
+stopTimer: stopping timer at 29930.28962065492
+stopTimer: Warning: Unable to cancel your timer
+startTimer: starting timer at 29930.28962065492
+After:
+nextSeqnumOverall: 89
+aBaseOverall: 88
+aIncommingSeqnum: 1
+--------------------------
+
+EVENT time: 29931.68156987212  type: 2  entity: 1
+B, in order: 1
+B, send ACK: 1
+toLayer3: seqnum: 0  acknum: 1  checksum: 1  payload:
+toLayer3: scheduling arrival on other side
+
+EVENT time: 29933.665974913776  type: 2  entity: 0
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 88nextSeqnumOverall: 89
+aBaseOverall: 89nextSeqnumOverall: 89
+A, reach the end of buffer, stop timer
+stopTimer: stopping timer at 29933.665974913776
+
+EVENT time: 30186.773277993096  type: 1  entity: 0
+generateNextArrival(): called
+generateNextArrival(): time is 30186.773277993096
+generateNextArrival(): future time for event 1 at entity 0 will be 30518.97335734122
+Simulator terminated at time 30186.773277993096
+
+
+===============STATISTICS=======================
+Number of original packets transmitted by A:89
+Number of retransmissions by A:102
+Number of data packets delivered to layer 5 at B:89
+Number of ACK packets sent by B:131
+Number of corrupted packets:0
+Ratio of lost packets:0.3167701863354037
+Ratio of corrupted packets:0.0
+Average RTT:9.682287057100394
+Average communication time:61.56031949107483
+==================================================
+
+EXTRA:

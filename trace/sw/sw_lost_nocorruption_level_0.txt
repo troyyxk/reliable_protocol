@@ -1,0 +1,2227 @@
+Inputs are :
+Enter number of messages to simulate (> 0): [10]
+Enter packet loss probability (0.0 for no loss): [0.0]
+Enter packet corruption probability (0.0 for no corruption): [0.0]
+Enter average time between messages from sender's layer 5 (> 0.0): [1000]
+Enter window size (> 0): [8]
+Enter retransmission timeout (>0.0) [15.0]
+Enter trace level (>= 0): [0]
+Enter random seed: [0]
+
+100
+0.3
+0.0
+300
+1
+15
+0
+1234
+
+-- * Network Simulator v1.0 * --
+Enter number of messages to simulate (> 0): [10] Enter packet loss probability (0.0 for no loss): [0.0] Enter packet corruption probability (0.0 for no corruption): [0.0] Enter average time between messages from sender's layer 5 (> 0.0): [1000] Enter window size (> 0): [8] Enter retransmission timeout (>0.0) [15.0] Enter trace level (>= 0): [0] Enter random seed: [0] ------- A, aOutput -------
+Before:
+nextSeqnumOverall: 0
+aBaseOverall: 0
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 1
+aBaseOverall: 0
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 0nextSeqnumOverall: 1
+aBaseOverall: 1nextSeqnumOverall: 1
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 1
+aBaseOverall: 1
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 2
+aBaseOverall: 1
+aIncommingSeqnum: 1
+--------------------------
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 2
+aBaseOverall: 1
+aIncommingSeqnum: 1
+After:
+nextSeqnumOverall: 2
+aBaseOverall: 1
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 1nextSeqnumOverall: 2
+aBaseOverall: 2nextSeqnumOverall: 2
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 2
+aBaseOverall: 2
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 3
+aBaseOverall: 2
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 2nextSeqnumOverall: 3
+aBaseOverall: 3nextSeqnumOverall: 3
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 3
+aBaseOverall: 3
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 4
+aBaseOverall: 3
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 3nextSeqnumOverall: 4
+aBaseOverall: 4nextSeqnumOverall: 4
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 4
+aBaseOverall: 4
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 5
+aBaseOverall: 4
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 4nextSeqnumOverall: 5
+aBaseOverall: 5nextSeqnumOverall: 5
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 5
+aBaseOverall: 5
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 6
+aBaseOverall: 5
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 5nextSeqnumOverall: 6
+aBaseOverall: 6nextSeqnumOverall: 6
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 6
+aBaseOverall: 6
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 7
+aBaseOverall: 6
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 6nextSeqnumOverall: 7
+aBaseOverall: 7nextSeqnumOverall: 7
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 7
+aBaseOverall: 7
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 8
+aBaseOverall: 7
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 7nextSeqnumOverall: 8
+aBaseOverall: 8nextSeqnumOverall: 8
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 8
+aBaseOverall: 8
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 9
+aBaseOverall: 8
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 8nextSeqnumOverall: 9
+aBaseOverall: 9nextSeqnumOverall: 9
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 9
+aBaseOverall: 9
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 10
+aBaseOverall: 9
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 9nextSeqnumOverall: 10
+aBaseOverall: 10nextSeqnumOverall: 10
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 10
+aBaseOverall: 10
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 11
+aBaseOverall: 10
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 10nextSeqnumOverall: 11
+aBaseOverall: 11nextSeqnumOverall: 11
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 11
+aBaseOverall: 11
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 12
+aBaseOverall: 11
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 11nextSeqnumOverall: 12
+aBaseOverall: 12nextSeqnumOverall: 12
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 12
+aBaseOverall: 12
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 13
+aBaseOverall: 12
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 12nextSeqnumOverall: 13
+aBaseOverall: 13nextSeqnumOverall: 13
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 13
+aBaseOverall: 13
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 14
+aBaseOverall: 13
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 13nextSeqnumOverall: 14
+aBaseOverall: 14nextSeqnumOverall: 14
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 14
+aBaseOverall: 14
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 15
+aBaseOverall: 14
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 14nextSeqnumOverall: 15
+aBaseOverall: 15nextSeqnumOverall: 15
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 15
+aBaseOverall: 15
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 16
+aBaseOverall: 15
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 15nextSeqnumOverall: 16
+aBaseOverall: 16nextSeqnumOverall: 16
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 16
+aBaseOverall: 16
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 17
+aBaseOverall: 16
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 16nextSeqnumOverall: 17
+aBaseOverall: 17nextSeqnumOverall: 17
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 17
+aBaseOverall: 17
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 18
+aBaseOverall: 17
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 17nextSeqnumOverall: 18
+aBaseOverall: 18nextSeqnumOverall: 18
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 18
+aBaseOverall: 18
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 19
+aBaseOverall: 18
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 18nextSeqnumOverall: 19
+aBaseOverall: 19nextSeqnumOverall: 19
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 19
+aBaseOverall: 19
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 20
+aBaseOverall: 19
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 19nextSeqnumOverall: 20
+aBaseOverall: 20nextSeqnumOverall: 20
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 20
+aBaseOverall: 20
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 21
+aBaseOverall: 20
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 20nextSeqnumOverall: 21
+aBaseOverall: 21nextSeqnumOverall: 21
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 21
+aBaseOverall: 21
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 22
+aBaseOverall: 21
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 21nextSeqnumOverall: 22
+aBaseOverall: 22nextSeqnumOverall: 22
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 22
+aBaseOverall: 22
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 23
+aBaseOverall: 22
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 22nextSeqnumOverall: 23
+aBaseOverall: 23nextSeqnumOverall: 23
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 23
+aBaseOverall: 23
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 24
+aBaseOverall: 23
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 24
+aBaseOverall: 23
+aIncommingSeqnum: 2
+After:
+nextSeqnumOverall: 24
+aBaseOverall: 23
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 23nextSeqnumOverall: 24
+aBaseOverall: 24nextSeqnumOverall: 24
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 24
+aBaseOverall: 24
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 25
+aBaseOverall: 24
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 24nextSeqnumOverall: 25
+aBaseOverall: 25nextSeqnumOverall: 25
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 25
+aBaseOverall: 25
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 26
+aBaseOverall: 25
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 25nextSeqnumOverall: 26
+aBaseOverall: 26nextSeqnumOverall: 26
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 26
+aBaseOverall: 26
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 27
+aBaseOverall: 26
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 26nextSeqnumOverall: 27
+aBaseOverall: 27nextSeqnumOverall: 27
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 27
+aBaseOverall: 27
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 28
+aBaseOverall: 27
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 27nextSeqnumOverall: 28
+aBaseOverall: 28nextSeqnumOverall: 28
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 28
+aBaseOverall: 28
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 29
+aBaseOverall: 28
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 28nextSeqnumOverall: 29
+aBaseOverall: 29nextSeqnumOverall: 29
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 29
+aBaseOverall: 29
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 30
+aBaseOverall: 29
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 29nextSeqnumOverall: 30
+aBaseOverall: 30nextSeqnumOverall: 30
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 30
+aBaseOverall: 30
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 31
+aBaseOverall: 30
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 30nextSeqnumOverall: 31
+aBaseOverall: 31nextSeqnumOverall: 31
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 31
+aBaseOverall: 31
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 32
+aBaseOverall: 31
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 31nextSeqnumOverall: 32
+aBaseOverall: 32nextSeqnumOverall: 32
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 32
+aBaseOverall: 32
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 33
+aBaseOverall: 32
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 32nextSeqnumOverall: 33
+aBaseOverall: 33nextSeqnumOverall: 33
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 33
+aBaseOverall: 33
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 34
+aBaseOverall: 33
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 34
+aBaseOverall: 33
+aIncommingSeqnum: 1
+After:
+nextSeqnumOverall: 34
+aBaseOverall: 33
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 33nextSeqnumOverall: 34
+aBaseOverall: 34nextSeqnumOverall: 34
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 34
+aBaseOverall: 34
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 35
+aBaseOverall: 34
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 34nextSeqnumOverall: 35
+aBaseOverall: 35nextSeqnumOverall: 35
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 35
+aBaseOverall: 35
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 36
+aBaseOverall: 35
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 35nextSeqnumOverall: 36
+aBaseOverall: 36nextSeqnumOverall: 36
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 36
+aBaseOverall: 36
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 37
+aBaseOverall: 36
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 36nextSeqnumOverall: 37
+aBaseOverall: 37nextSeqnumOverall: 37
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 37
+aBaseOverall: 37
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 38
+aBaseOverall: 37
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 37nextSeqnumOverall: 38
+aBaseOverall: 38nextSeqnumOverall: 38
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 38
+aBaseOverall: 38
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 39
+aBaseOverall: 38
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 38nextSeqnumOverall: 39
+aBaseOverall: 39nextSeqnumOverall: 39
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 39
+aBaseOverall: 39
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 40
+aBaseOverall: 39
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 2
+B, send ACK: 2
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 40
+aBaseOverall: 39
+aIncommingSeqnum: 2
+After:
+nextSeqnumOverall: 40
+aBaseOverall: 39
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 39nextSeqnumOverall: 40
+aBaseOverall: 40nextSeqnumOverall: 40
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 40
+aBaseOverall: 40
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 41
+aBaseOverall: 40
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 40nextSeqnumOverall: 41
+aBaseOverall: 41nextSeqnumOverall: 41
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 41
+aBaseOverall: 41
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 42
+aBaseOverall: 41
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 41nextSeqnumOverall: 42
+aBaseOverall: 42nextSeqnumOverall: 42
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 42
+aBaseOverall: 42
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 43
+aBaseOverall: 42
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 42nextSeqnumOverall: 43
+aBaseOverall: 43nextSeqnumOverall: 43
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 43
+aBaseOverall: 43
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 44
+aBaseOverall: 43
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 43nextSeqnumOverall: 44
+aBaseOverall: 44nextSeqnumOverall: 44
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 44
+aBaseOverall: 44
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 45
+aBaseOverall: 44
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 44nextSeqnumOverall: 45
+aBaseOverall: 45nextSeqnumOverall: 45
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 45
+aBaseOverall: 45
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 46
+aBaseOverall: 45
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 45nextSeqnumOverall: 46
+aBaseOverall: 46nextSeqnumOverall: 46
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 46
+aBaseOverall: 46
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 47
+aBaseOverall: 46
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 46nextSeqnumOverall: 47
+aBaseOverall: 47nextSeqnumOverall: 47
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 47
+aBaseOverall: 47
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 48
+aBaseOverall: 47
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 48
+aBaseOverall: 47
+aIncommingSeqnum: 1
+After:
+nextSeqnumOverall: 48
+aBaseOverall: 47
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 47nextSeqnumOverall: 48
+aBaseOverall: 48nextSeqnumOverall: 48
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 48
+aBaseOverall: 48
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 49
+aBaseOverall: 48
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 48nextSeqnumOverall: 49
+aBaseOverall: 49nextSeqnumOverall: 49
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 49
+aBaseOverall: 49
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 50
+aBaseOverall: 49
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 50
+aBaseOverall: 49
+aIncommingSeqnum: 2
+After:
+nextSeqnumOverall: 50
+aBaseOverall: 49
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 49nextSeqnumOverall: 50
+aBaseOverall: 50nextSeqnumOverall: 50
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 50
+aBaseOverall: 50
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 51
+aBaseOverall: 50
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 50nextSeqnumOverall: 51
+aBaseOverall: 51nextSeqnumOverall: 51
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 51
+aBaseOverall: 51
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 52
+aBaseOverall: 51
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 51nextSeqnumOverall: 52
+aBaseOverall: 52nextSeqnumOverall: 52
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 52
+aBaseOverall: 52
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 53
+aBaseOverall: 52
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 52nextSeqnumOverall: 53
+aBaseOverall: 53nextSeqnumOverall: 53
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 53
+aBaseOverall: 53
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 54
+aBaseOverall: 53
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 54
+aBaseOverall: 53
+aIncommingSeqnum: 1
+After:
+nextSeqnumOverall: 54
+aBaseOverall: 53
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 53nextSeqnumOverall: 54
+aBaseOverall: 54nextSeqnumOverall: 54
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 54
+aBaseOverall: 54
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 55
+aBaseOverall: 54
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 55
+aBaseOverall: 54
+aIncommingSeqnum: 1
+After:
+nextSeqnumOverall: 55
+aBaseOverall: 54
+aIncommingSeqnum: 2
+--------------------------
+B, not in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 54nextSeqnumOverall: 55
+aBaseOverall: 55nextSeqnumOverall: 55
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 55
+aBaseOverall: 55
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 56
+aBaseOverall: 55
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 55nextSeqnumOverall: 56
+aBaseOverall: 56nextSeqnumOverall: 56
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 56
+aBaseOverall: 56
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 57
+aBaseOverall: 56
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 56nextSeqnumOverall: 57
+aBaseOverall: 57nextSeqnumOverall: 57
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 57
+aBaseOverall: 57
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 58
+aBaseOverall: 57
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 57nextSeqnumOverall: 58
+aBaseOverall: 58nextSeqnumOverall: 58
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 58
+aBaseOverall: 58
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 59
+aBaseOverall: 58
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 58nextSeqnumOverall: 59
+aBaseOverall: 59nextSeqnumOverall: 59
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 59
+aBaseOverall: 59
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 60
+aBaseOverall: 59
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 59nextSeqnumOverall: 60
+aBaseOverall: 60nextSeqnumOverall: 60
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 60
+aBaseOverall: 60
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 61
+aBaseOverall: 60
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 60nextSeqnumOverall: 61
+aBaseOverall: 61nextSeqnumOverall: 61
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 61
+aBaseOverall: 61
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 62
+aBaseOverall: 61
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 61nextSeqnumOverall: 62
+aBaseOverall: 62nextSeqnumOverall: 62
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 62
+aBaseOverall: 62
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 63
+aBaseOverall: 62
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 62nextSeqnumOverall: 63
+aBaseOverall: 63nextSeqnumOverall: 63
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 63
+aBaseOverall: 63
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 64
+aBaseOverall: 63
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 63nextSeqnumOverall: 64
+aBaseOverall: 64nextSeqnumOverall: 64
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 64
+aBaseOverall: 64
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 65
+aBaseOverall: 64
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 64nextSeqnumOverall: 65
+aBaseOverall: 65nextSeqnumOverall: 65
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 65
+aBaseOverall: 65
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 66
+aBaseOverall: 65
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 65nextSeqnumOverall: 66
+aBaseOverall: 66nextSeqnumOverall: 66
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 66
+aBaseOverall: 66
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 67
+aBaseOverall: 66
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 66nextSeqnumOverall: 67
+aBaseOverall: 67nextSeqnumOverall: 67
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 67
+aBaseOverall: 67
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 68
+aBaseOverall: 67
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 67nextSeqnumOverall: 68
+aBaseOverall: 68nextSeqnumOverall: 68
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 68
+aBaseOverall: 68
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 69
+aBaseOverall: 68
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 68nextSeqnumOverall: 69
+aBaseOverall: 69nextSeqnumOverall: 69
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 69
+aBaseOverall: 69
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 70
+aBaseOverall: 69
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 69nextSeqnumOverall: 70
+aBaseOverall: 70nextSeqnumOverall: 70
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 70
+aBaseOverall: 70
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 71
+aBaseOverall: 70
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 70nextSeqnumOverall: 71
+aBaseOverall: 71nextSeqnumOverall: 71
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 71
+aBaseOverall: 71
+aIncommingSeqnum: 2
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 72
+aBaseOverall: 71
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 2
+B, send ACK: 2
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 72
+aBaseOverall: 71
+aIncommingSeqnum: 1
+After:
+nextSeqnumOverall: 72
+aBaseOverall: 71
+aIncommingSeqnum: 2
+--------------------------
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 71nextSeqnumOverall: 72
+aBaseOverall: 72nextSeqnumOverall: 72
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 72
+aBaseOverall: 72
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 73
+aBaseOverall: 72
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 72nextSeqnumOverall: 73
+aBaseOverall: 73nextSeqnumOverall: 73
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 73
+aBaseOverall: 73
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 74
+aBaseOverall: 73
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 73nextSeqnumOverall: 74
+aBaseOverall: 74nextSeqnumOverall: 74
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 74
+aBaseOverall: 74
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 75
+aBaseOverall: 74
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 74nextSeqnumOverall: 75
+aBaseOverall: 75nextSeqnumOverall: 75
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 75
+aBaseOverall: 75
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 76
+aBaseOverall: 75
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 75nextSeqnumOverall: 76
+aBaseOverall: 76nextSeqnumOverall: 76
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 76
+aBaseOverall: 76
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 77
+aBaseOverall: 76
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 76nextSeqnumOverall: 77
+aBaseOverall: 77nextSeqnumOverall: 77
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 77
+aBaseOverall: 77
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 78
+aBaseOverall: 77
+aIncommingSeqnum: 2
+--------------------------
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 78
+aBaseOverall: 77
+aIncommingSeqnum: 2
+After:
+nextSeqnumOverall: 78
+aBaseOverall: 77
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 77nextSeqnumOverall: 78
+aBaseOverall: 78nextSeqnumOverall: 78
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 78
+aBaseOverall: 78
+aIncommingSeqnum: 1
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 79
+aBaseOverall: 78
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 79
+aBaseOverall: 78
+aIncommingSeqnum: 2
+After:
+nextSeqnumOverall: 79
+aBaseOverall: 78
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 1
+B, send ACK: 1
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 78nextSeqnumOverall: 79
+aBaseOverall: 79nextSeqnumOverall: 79
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 79
+aBaseOverall: 79
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 80
+aBaseOverall: 79
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 79nextSeqnumOverall: 80
+aBaseOverall: 80nextSeqnumOverall: 80
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 80
+aBaseOverall: 80
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 81
+aBaseOverall: 80
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 80nextSeqnumOverall: 81
+aBaseOverall: 81nextSeqnumOverall: 81
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 81
+aBaseOverall: 81
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 82
+aBaseOverall: 81
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 81nextSeqnumOverall: 82
+aBaseOverall: 82nextSeqnumOverall: 82
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 82
+aBaseOverall: 82
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 83
+aBaseOverall: 82
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 82nextSeqnumOverall: 83
+aBaseOverall: 83nextSeqnumOverall: 83
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 83
+aBaseOverall: 83
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 84
+aBaseOverall: 83
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, not in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 83nextSeqnumOverall: 84
+aBaseOverall: 84nextSeqnumOverall: 84
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 84
+aBaseOverall: 84
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 85
+aBaseOverall: 84
+aIncommingSeqnum: 1
+--------------------------
+A, timeout
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 84nextSeqnumOverall: 85
+aBaseOverall: 85nextSeqnumOverall: 85
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 85
+aBaseOverall: 85
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 86
+aBaseOverall: 85
+aIncommingSeqnum: 2
+--------------------------
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 85nextSeqnumOverall: 86
+aBaseOverall: 86nextSeqnumOverall: 86
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 86
+aBaseOverall: 86
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 87
+aBaseOverall: 86
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 86nextSeqnumOverall: 87
+aBaseOverall: 87nextSeqnumOverall: 87
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 87
+aBaseOverall: 87
+aIncommingSeqnum: 1
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 88
+aBaseOverall: 87
+aIncommingSeqnum: 2
+--------------------------
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+A, timeout
+A, send: 2
+stopTimer: Warning: Unable to cancel your timer
+B, in order: 2
+B, send ACK: 2
+A, in window: 2
+aBaseLocal: 2
+aBaseOverall: 87nextSeqnumOverall: 88
+aBaseOverall: 88nextSeqnumOverall: 88
+A, reach the end of buffer, stop timer
+------- A, aOutput -------
+Before:
+nextSeqnumOverall: 88
+aBaseOverall: 88
+aIncommingSeqnum: 2
+A, send: 1
+stopTimer: Warning: Unable to cancel your timer
+After:
+nextSeqnumOverall: 89
+aBaseOverall: 88
+aIncommingSeqnum: 1
+--------------------------
+B, in order: 1
+B, send ACK: 1
+A, in window: 1
+aBaseLocal: 1
+aBaseOverall: 88nextSeqnumOverall: 89
+aBaseOverall: 89nextSeqnumOverall: 89
+A, reach the end of buffer, stop timer
+Simulator terminated at time 30186.773277993096
+
+
+===============STATISTICS=======================
+Number of original packets transmitted by A:89
+Number of retransmissions by A:102
+Number of data packets delivered to layer 5 at B:89
+Number of ACK packets sent by B:131
+Number of corrupted packets:0
+Ratio of lost packets:0.3167701863354037
+Ratio of corrupted packets:0.0
+Average RTT:9.682287057100394
+Average communication time:61.56031949107483
+==================================================
+
+EXTRA:
