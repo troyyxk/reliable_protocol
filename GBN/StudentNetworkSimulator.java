@@ -98,6 +98,9 @@ public class StudentNetworkSimulator extends NetworkSimulator
     int packetReceivedB, delieveredCntB = 0, ackSentCntB = 0;
     int corruptedCnt = 0;
     int timeOutCnt = 0;
+    private List<Double> rttSendTimeList;
+    private List<Boolean> ifRetransmitList;
+    private List<Double> ackedList;
 
     // A
     private int aBaseOverall, nextSeqnumOverall, aIncommingSeqnum;
@@ -284,6 +287,10 @@ public class StudentNetworkSimulator extends NetworkSimulator
         aBuffer.add(curPacket);
         if (nextSeqnumOverall < aBaseOverall + WindowSize) {
             aSendPacket(aBuffer.get(nextSeqnumOverall));
+            Double time = getTime();
+            rttSendTimeList.add(time);
+            ifRetransmitList.add(false);
+            ackedList.add(null);
             origTransmitCntA++;
             nextSeqnumOverall++;
         }
@@ -310,6 +317,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
             corruptedCnt++;
             System.out.println("A, corrupt");
             for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
+                ifRetransmitList.set(aBaseOverall, true);
                 aSendPacket(aBuffer.get(i));
             }
         }
@@ -321,7 +329,13 @@ public class StudentNetworkSimulator extends NetworkSimulator
             System.out.println("aBaseOverall: " + aBaseOverall + "nextSeqnumOverall: " + nextSeqnumOverall);
             int leapForward = getLeap(aBaseLocal, acknum) + 1;
             if (leapForward > 1) {
-                System.out.println("*** More than 2 ***");
+                for (int i = aBaseOverall; i < aBaseOverall + leapForward; i++) {
+                    ifRetransmitList.set(i, true);
+                }
+            }
+            Double time = getTime();
+            for (int i = aBaseOverall; i < aBaseOverall + leapForward; i++) {
+                ackedList.set(i, time);
             }
             aBaseOverall += leapForward;
             System.out.println("aBaseOverall: " + aBaseOverall + "nextSeqnumOverall: " + nextSeqnumOverall);
@@ -335,6 +349,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
                 stopTimer(A);
             } else {
                 while (nextSeqnumOverall < aBaseOverall + WindowSize && aBuffer.size() > nextSeqnumOverall) {
+                    rttSendTimeList.add(getTime());
                     aSendPacket(aBuffer.get(nextSeqnumOverall));
                     origTransmitCntA++;
                     nextSeqnumOverall++;
@@ -348,6 +363,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
                 int localI = overallToLocalSeqnum(i);
                 if (!arrayContains(packet.getSack(), localI)) {
                     reTransmitCntA++;
+                    ifRetransmitList.set(i, true);
                     aSendPacket(aBuffer.get(i));
                 }
             }
@@ -363,6 +379,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
         reTransmitCntA++;
         System.out.println("A, timeout");
         for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
+            ifRetransmitList.set(i, true);
             aSendPacket(aBuffer.get(i));
         }
     }
@@ -377,6 +394,9 @@ public class StudentNetworkSimulator extends NetworkSimulator
         this.nextSeqnumOverall = 0;
         this.aIncommingSeqnum = 1;
         this.aBuffer = new ArrayList<Packet>();
+        this.rttSendTimeList = new ArrayList<>();
+        this.ifRetransmitList = new ArrayList<>();
+        this.ackedList = new ArrayList<>();
     }
     
     // This routine will be called whenever a packet sent from the B-side 
@@ -451,16 +471,40 @@ public class StudentNetworkSimulator extends NetworkSimulator
             System.out.println("Number of data packets delivered to layer 5 at B:" + delieveredCntB);
             System.out.println("Number of ACK packets sent by B:" + ackSentCntB);
             System.out.println("Number of corrupted packets:" + corruptedCnt);
-            System.out.println("Ratio of lost packets:" + "<YourVariableHere>" );
-            System.out.println("Ratio of corrupted packets:" + "<YourVariableHere>");
-            System.out.println("Average RTT:" + "<YourVariableHere>");
-            System.out.println("Average communication time:" + "<YourVariableHere>");
+            System.out.println("Ratio of lost packets:" + (double)(reTransmitCntA - corruptedCnt) / (origTransmitCntA + reTransmitCntA + ackSentCntB));
+            System.out.println("Ratio of corrupted packets:" + (double)(corruptedCnt) / (origTransmitCntA + reTransmitCntA + ackSentCntB - (reTransmitCntA - corruptedCnt)));
+            System.out.println("Average RTT:" + getAvgRtt());
+            System.out.println("Average communication time:" + getAvgComTime());
             System.out.println("==================================================");
 
             // PRINT YOUR OWN STATISTIC HERE TO CHECK THE CORRECTNESS OF YOUR PROGRAM
             System.out.println("\nEXTRA:");
             // EXAMPLE GIVEN BELOW
-            //System.out.println("Example statistic you want to check e.g. number of ACK packets received by A :" + "<YourVariableHere>"); 
-    }        
+            //System.out.println("Example statistic you want to check e.g. number of ACK packets received by A :" + "<YourVariableHere>");
+            //System.out.println(rttSendTimeList.size());
+            //System.out.println(ifRetransmitList.size());
+            //System.out.println(ackedList.size());
+    }
 
+    private double getAvgRtt() {
+        int length = rttSendTimeList.size();
+        double tot = 0;
+        int qualifiedCnt = 0;
+        for (int i = 0; i < length; i++) {
+            if (!ifRetransmitList.get(i)) {
+                tot += ackedList.get(i) - rttSendTimeList.get(i);
+                qualifiedCnt++;
+            }
+        }
+        return tot / qualifiedCnt;
+    }
+
+    private double getAvgComTime() {
+        int length = rttSendTimeList.size();
+        double tot = 0;
+        for (int i = 0; i < length; i++) {
+            tot += ackedList.get(i) - rttSendTimeList.get(i);
+        }
+        return tot / length;
+    }
 }
