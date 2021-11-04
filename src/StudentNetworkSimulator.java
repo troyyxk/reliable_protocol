@@ -92,15 +92,12 @@ public class StudentNetworkSimulator extends NetworkSimulator
     private double RxmtInterval;
     private int LimitSeqNo;
 
-    //region gbn sack
+    //region gbn
     // statistics
     int origTransmitCntA = 0, reTransmitCntA = 0;
     int packetReceivedB, delieveredCntB = 0, ackSentCntB = 0;
     int corruptedCnt = 0;
     int timeOutCnt = 0;
-    private List<Double> rttSendTimeList;
-    private List<Boolean> ifRetransmitList;
-    private List<Double> ackedList;
 
     // A
     private int aBaseOverall, nextSeqnumOverall, aIncommingSeqnum;
@@ -108,11 +105,15 @@ public class StudentNetworkSimulator extends NetworkSimulator
     // N is window size
 
     // B
-    private int bExpectedSeqnum, bSackLenLimit;
+    private int bExpectedSeqnum;
     private HashMap<Integer, Packet> bBuffer;
-    private ArrayList<Integer> bSack;
     // N is window size
     //endregion
+
+    //Stat Varaibles
+    private List<Double> rttSendTimeList;
+    private List<Boolean> ifRetransmitList;
+    private List<Double> ackedList;
 
     // Add any necessary class variables here.  Remember, you cannot use
     // these variables to send messages error free!  They can only hold
@@ -148,9 +149,6 @@ public class StudentNetworkSimulator extends NetworkSimulator
         for (Character c : p.getPayload().toCharArray()) {
             newChecksum += Character.getNumericValue(c);
         }
-        for (int i = 0; i < p.getSack().length; i++) {
-            newChecksum += p.getSack()[i];
-        }
         return newChecksum;
     }
 
@@ -161,26 +159,11 @@ public class StudentNetworkSimulator extends NetworkSimulator
         for (Character c : p.getPayload().toCharArray()) {
             newChecksum += Character.getNumericValue(c);
         }
-        for (int i = 0; i < p.getSack().length; i++) {
-            newChecksum += p.getSack()[i];
-        }
         return newChecksum == p.getChecksum();
     }
 
     public int convertExpectedSeqnumToCurSeqnum(int expectedSeqnum) {
         return subtructFromSeqnum(expectedSeqnum);
-    }
-
-    public int[] getSACK(ArrayList<Integer> sackList) {
-        if (sackList.size() > this.bSackLenLimit) {
-            System.out.println("In getSACK, sackList has length longer than bSackLenLimit!");
-            System.exit(1);
-        }
-        int[] resultSack = new int[this.bSackLenLimit];
-        for (int i = 0; i < sackList.size(); i++) {
-            resultSack[i] = sackList.get(i);
-        }
-        return resultSack;
     }
 
     public int subtructFromSeqnum(int seqnum) {
@@ -216,8 +199,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
     public Packet createACKPacket() {
         Packet curPacket = new Packet(0,
                 this.convertExpectedSeqnumToCurSeqnum(this.bExpectedSeqnum),
-                0,
-                this.getSACK(this.bSack));
+                0);
         addChecksum(curPacket);
         return curPacket;
     }
@@ -226,18 +208,10 @@ public class StudentNetworkSimulator extends NetworkSimulator
         Packet curPacket = new Packet(aIncommingSeqnum,
                 0,
                 0,
-                message.getData(),
-                new int[5]);
+                message.getData());
         addChecksum(curPacket);
         aIncommingSeqnum = addOneToSeqnum(aIncommingSeqnum);
         return curPacket;
-    }
-
-    private void addToBSack(int packetSeqnum) {
-        bSack.add(packetSeqnum);
-        if (bSack.size() > bSackLenLimit) {
-            bSack.remove(0);
-        }
     }
 
     public int overallToLocalSeqnum(int overallSeqnum) {
@@ -300,8 +274,6 @@ public class StudentNetworkSimulator extends NetworkSimulator
         System.out.println("aBaseOverall: " + aBaseOverall);
         System.out.println("aIncommingSeqnum: " + aIncommingSeqnum);
         System.out.println("--------------------------");
-
-
     }
     
     // This routine will be called whenever a packet sent from the B-side 
@@ -316,10 +288,10 @@ public class StudentNetworkSimulator extends NetworkSimulator
         if (!evaluateChecksum(packet)) {
             corruptedCnt++;
             System.out.println("A, corrupt");
-            for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
-                ifRetransmitList.set(aBaseOverall, true);
+            if (aBaseOverall < nextSeqnumOverall) {
                 reTransmitCntA++;
-                aSendPacket(aBuffer.get(i));
+                aSendPacket(aBuffer.get(aBaseOverall));
+                ifRetransmitList.set(aBaseOverall, true);
             }
         }
         // no corrupt
@@ -330,6 +302,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
             System.out.println("aBaseOverall: " + aBaseOverall + "nextSeqnumOverall: " + nextSeqnumOverall);
             int leapForward = getLeap(aBaseLocal, acknum) + 1;
             if (leapForward > 1) {
+                System.out.println("*** More than 1 ***");
                 for (int i = aBaseOverall; i < aBaseOverall + leapForward; i++) {
                     ifRetransmitList.set(i, true);
                 }
@@ -360,19 +333,14 @@ public class StudentNetworkSimulator extends NetworkSimulator
         // ack num not in window, retransmit
         else {
             System.out.println("A, retransmit, not in window: " + acknum);
-            int j = 0;
-            for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
-                int localI = overallToLocalSeqnum(i);
-                if (!arrayContains(packet.getSack(), localI)) {
-                    j++;
-                    if (j >=2) {
-                        System.out.println("^^^ Send window with size more than 1 ^^^");
-                    }
-                    reTransmitCntA++;
-                    ifRetransmitList.set(i, true);
-                    aSendPacket(aBuffer.get(i));
-                }
+            if (aBaseOverall < nextSeqnumOverall) {
+                reTransmitCntA++;
+                ifRetransmitList.set(aBaseOverall, true);
+                aSendPacket(aBuffer.get(aBaseOverall));
             }
+//            for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
+//                aSendPacket(aBuffer.get(i));
+//            }
         }
     }
 
@@ -383,16 +351,15 @@ public class StudentNetworkSimulator extends NetworkSimulator
     protected void aTimerInterrupt()
     {
         System.out.println("A, timeout");
-        int j = 0;
-        for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
-            j++;
-            if (j >=2) {
-                System.out.println("^^^ Send window with size more than 1 ^^^");
-            }
+        if (aBaseOverall < nextSeqnumOverall) {
             reTransmitCntA++;
-            ifRetransmitList.set(i, true);
-            aSendPacket(aBuffer.get(i));
+            ifRetransmitList.set(aBaseOverall, true);
+            aSendPacket(aBuffer.get(aBaseOverall));
         }
+//        for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
+//            reTransmitCntA++;
+//            aSendPacket(aBuffer.get(i));
+//        }
     }
     
     // This routine will be called once, before any of your other A-side 
@@ -432,12 +399,10 @@ public class StudentNetworkSimulator extends NetworkSimulator
 
             int i = bExpectedSeqnum;
             while (inWindow(bExpectedSeqnum, WindowSize, i) && bBuffer.containsKey(i)) {
-                // update buffer and sack, to layer5 if possible
+                // update buffer, to layer5 if possible
                 toLayer5(bBuffer.get(i).getPayload());
                 delieveredCntB++;
                 bBuffer.remove(i);
-                int finalI = i;
-                bSack.removeIf(a -> (a == finalI));
 
                 i = addOneToSeqnum(i);
             }
@@ -448,11 +413,10 @@ public class StudentNetworkSimulator extends NetworkSimulator
         // not in order
         else {
             System.out.println("B, not in order: " + packet.getSeqnum());
-            // if in window size, add to buffer and SACK
+            // if in window size, add to buffer
             int packetSeqnum = packet.getSeqnum();
             if (inWindow(bExpectedSeqnum, WindowSize, packetSeqnum)) {
                 bBuffer.put(packetSeqnum, packet);
-                addToBSack(packetSeqnum);
             }
 
             bSendAck();
@@ -468,8 +432,6 @@ public class StudentNetworkSimulator extends NetworkSimulator
     {
         bExpectedSeqnum = 1;
         bBuffer = new HashMap<Integer, Packet>();
-        bSack = new ArrayList<Integer>();
-        bSackLenLimit = 5;
     }
 
     // Use to print final statistics
