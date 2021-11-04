@@ -281,8 +281,9 @@ public class StudentNetworkSimulator extends NetworkSimulator
         if (!evaluateChecksum(packet)) {
             corruptedCnt++;
             System.out.println("A, corrupt");
-            for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
-                aSendPacket(aBuffer.get(i));
+            if (aBaseOverall < nextSeqnumOverall) {
+                reTransmitCntA++;
+                aSendPacket(aBuffer.get(aBaseOverall));
             }
         }
         // no corrupt
@@ -293,7 +294,7 @@ public class StudentNetworkSimulator extends NetworkSimulator
             System.out.println("aBaseOverall: " + aBaseOverall + "nextSeqnumOverall: " + nextSeqnumOverall);
             int leapForward = getLeap(aBaseLocal, acknum) + 1;
             if (leapForward > 1) {
-                System.out.println("*** More than 2 ***");
+                System.out.println("*** More than 1 ***");
             }
             aBaseOverall += leapForward;
             System.out.println("aBaseOverall: " + aBaseOverall + "nextSeqnumOverall: " + nextSeqnumOverall);
@@ -308,15 +309,16 @@ public class StudentNetworkSimulator extends NetworkSimulator
             } else {
                 while (nextSeqnumOverall < aBaseOverall + WindowSize && aBuffer.size() > nextSeqnumOverall) {
                     aSendPacket(aBuffer.get(nextSeqnumOverall));
+                    origTransmitCntA++;
                     nextSeqnumOverall++;
                 }
             }
         }
         // ack num not in window, retransmit
         else {
-            reTransmitCntA++;
             System.out.println("A, retransmit, not in window: " + acknum);
             if (aBaseOverall < nextSeqnumOverall) {
+                reTransmitCntA++;
                 aSendPacket(aBuffer.get(aBaseOverall));
             }
 //            for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
@@ -331,11 +333,15 @@ public class StudentNetworkSimulator extends NetworkSimulator
     // for how the timer is started and stopped. 
     protected void aTimerInterrupt()
     {
-        reTransmitCntA++;
         System.out.println("A, timeout");
-        for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
-            aSendPacket(aBuffer.get(i));
+        if (aBaseOverall < nextSeqnumOverall) {
+            reTransmitCntA++;
+            aSendPacket(aBuffer.get(aBaseOverall));
         }
+//        for (int i = aBaseOverall; i < nextSeqnumOverall; i++) {
+//            reTransmitCntA++;
+//            aSendPacket(aBuffer.get(i));
+//        }
     }
     
     // This routine will be called once, before any of your other A-side 
