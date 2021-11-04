@@ -433,6 +433,5 @@ public class StudentNetworkSimulator extends NetworkSimulator
             System.out.println("\nEXTRA:");
             // EXAMPLE GIVEN BELOW
             //System.out.println("Example statistic you want to check e.g. number of ACK packets received by A :" + "<YourVariableHere>"); 
-    }        
-
+    }
 }
